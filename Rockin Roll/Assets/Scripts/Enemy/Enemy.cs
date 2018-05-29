@@ -8,6 +8,8 @@ public class Enemy : MonoBehaviour
 
     public EnemyStats enemyStats;
 
+    public int rotationAngle;
+
     void Awake()
     {
         enemyStats = GameObject.Find("GameManager").GetComponent<EnemyStats>();
@@ -17,6 +19,9 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         moveSpeed = enemyStats.enemyMoveSpeed;
+        rotationAngle = enemyStats.enemyRotation;
+
+        transform.Rotate(new Vector3(0,rotationAngle,0));
     }
 
     // Update is called once per frame

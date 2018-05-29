@@ -29,6 +29,9 @@ public class PlayTest : MonoBehaviour
                     spawnManager.spawnerAmount = 3;
                     break;
                 case 3:
+                    spawnManager.spawnerAmount = 10;
+                    break;
+                case 10:
                     spawnManager.spawnerAmount = 1;
                     break;
             }
@@ -45,9 +48,17 @@ public class PlayTest : MonoBehaviour
                     enemyStats.enemyMoveSpeed = 12;
                     break;
                 case 12:
+                    enemyStats.enemyMoveSpeed = 16;
+                    break;
+                case 16:
                     enemyStats.enemyMoveSpeed = 4;
                     break;
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.F3))
+        {
+            enemyStats.randomRotationOn = !enemyStats.randomRotationOn;
         }
     }
 }
