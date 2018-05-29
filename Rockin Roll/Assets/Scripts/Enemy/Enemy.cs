@@ -29,8 +29,6 @@ public class Enemy : MonoBehaviour
 
         transform.Rotate(new Vector3(0,rotationAngle,0));
 
-        //randomDeath = Random.Range(0, 3);
-
         deathChoice = 0;
     }
 
@@ -56,27 +54,37 @@ public class Enemy : MonoBehaviour
         {
             gameObject.GetComponent<BoxCollider>().enabled = false;
 
+            //gameObject.tag = "Untagged";
+
             enemyHitLocation = new Vector3(other.contacts[0].point.x, 1, other.contacts[0].point.z);
-            Vector3 midpoint = (enemyHitLocation + transform.position / 2);
+            Vector3 midpoint = (enemyHitLocation + transform.position) / 2;
 
             if (deathChoice == 0)
             {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
+                //Instantiate(shatterPrefab, transform.position, transform.rotation);
+
+                Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
             }
 
             if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 0)
             {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
+                //Instantiate(shatterPrefab, transform.position, transform.rotation);
+
+                Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
             }
 
             if (deathChoice == 0 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
             {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
+                //Instantiate(shatterPrefab, transform.position, transform.rotation);
+
+                Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
             }
 
             if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
             {
-                Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
+                //Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
+
+                Instantiate(shatterPrefab, midpoint, transform.rotation);
             }
 
 
@@ -102,12 +110,4 @@ public class Enemy : MonoBehaviour
             deathChoice = 1;
         }
     }
-
-    /*void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.CompareTag("EnemyHeadOn"))
-        {
-            deathChoice = 0;
-        }
-    }*/
 }
