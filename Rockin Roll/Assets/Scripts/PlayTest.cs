@@ -7,12 +7,11 @@ public class PlayTest : MonoBehaviour
     public SpawnManager spawnManager;
 
     public EnemyStats enemyStats;
-    public int enemyToggle;
 
     // Use this for initialization
     void Start()
     {
-        enemyToggle = 1;
+        
     }
 
     // Update is called once per frame
@@ -23,15 +22,15 @@ public class PlayTest : MonoBehaviour
             switch (spawnManager.spawnerAmount)
             {
                 case 1:
-                    spawnManager.spawnerAmount = 2;
+                    spawnManager.spawnerAmount = 5;
                     break;
-                case 2:
-                    spawnManager.spawnerAmount = 3;
-                    break;
-                case 3:
+                case 5:
                     spawnManager.spawnerAmount = 10;
                     break;
                 case 10:
+                    spawnManager.spawnerAmount = 15;
+                    break;
+                case 15:
                     spawnManager.spawnerAmount = 1;
                     break;
             }
