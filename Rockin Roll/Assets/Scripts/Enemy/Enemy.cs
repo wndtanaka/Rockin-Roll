@@ -10,6 +10,10 @@ public class Enemy : MonoBehaviour
 
     public int rotationAngle;
 
+    public Vector3 enemyHitLocation;
+
+    public GameObject explosionPrefab;
+
     void Awake()
     {
         enemyStats = GameObject.Find("GameManager").GetComponent<EnemyStats>();
@@ -39,7 +43,12 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            enemyHitLocation = other.contacts[0].point;
+
+            //Debug.Log(enemyHitLocation);
+
+            Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
+
             Destroy(gameObject);
         }
 
