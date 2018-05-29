@@ -28,5 +28,11 @@ public class Enemy : MonoBehaviour
         {
             Debug.Log("Enemy.cs: Enemy hit Player!");
         }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+        }
     }
 }
