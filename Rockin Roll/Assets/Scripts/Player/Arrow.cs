@@ -7,7 +7,6 @@ public class Arrow : MonoBehaviour
     public int[] angle;
     public int currentAngle;
 
-    // Use this for initialization
     void Start()
     {
         currentAngle = 0;
@@ -15,10 +14,9 @@ public class Arrow : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, angle[currentAngle], 0);
     }
 
-    // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (GameManager.Instance.InputController.ChangeDirection)
         {
             if (currentAngle == 3)
             {

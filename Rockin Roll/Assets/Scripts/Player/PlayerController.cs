@@ -11,12 +11,19 @@ public class PlayerController : MonoBehaviour
     int index = 0;
     bool changeDirection = false;
 
+    InputController inputController;
+
+    private void Start()
+    {
+        inputController = GameManager.Instance.InputController;
+    }
+
     void Update()
     {
         #region Player Controller
         if (!changeDirection)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (inputController.MoveIndex)
             {
                 index++;
                 if (index >= transformDirection.Length)
@@ -24,18 +31,18 @@ public class PlayerController : MonoBehaviour
                     index = 0;
                 }
             }
-            if (Input.GetKey(KeyCode.Space))
+            if (inputController.Move)
             {
                 transform.Translate(transformDirection[index] * speed * Time.deltaTime);
             }
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (inputController.ChangeDirection)
             {
                 changeDirection = !changeDirection;
             }
         }
         else
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (inputController.MoveIndex)
             {
                 index++;
                 if (index >= transformDirection.Length)
@@ -43,11 +50,11 @@ public class PlayerController : MonoBehaviour
                     index = 0;
                 }
             }
-            if (Input.GetKey(KeyCode.Space))
+            if (inputController.Move)
             {
                 transform.Translate(transformDirection[index] * speed * Time.deltaTime);
             }
-            if (Input.GetKeyUp(KeyCode.Space))
+            if (inputController.ChangeDirection)
             {
                 changeDirection = !changeDirection;
             }

@@ -22,15 +22,24 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (isPaused)
+        {
+            GameManager.Instance.InputController.enabled = false;
+        }
         if (isDead)
         {
             gameOverMenu.SetActive(true);
         }
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (GameManager.Instance.InputController.Pause && !isPaused)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
             isPaused = !isPaused;
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        {
+            StartCoroutine(ResumeGame());
         }
     }
 
@@ -46,15 +55,12 @@ public class UIManager : MonoBehaviour
 
     public void ResumeButton()
     {
-        pauseMenu.SetActive(false);
         StartCoroutine(ResumeGame());
-        //pauseMenu.SetActive(false);
-        //Time.timeScale = 1;
-        //isPaused = !isPaused;
     }
 
     public IEnumerator ResumeGame()
     {
+        pauseMenu.SetActive(false);
         waitCounter = 3;
         while (waitCounter > 0f)
         {
@@ -64,6 +70,8 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         Time.timeScale = 1;
+        GameManager.Instance.InputController.enabled = true;
+        isPaused = !isPaused;
         counterText.gameObject.SetActive(false);
     }
 }
