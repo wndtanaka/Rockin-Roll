@@ -52,42 +52,30 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+            //gameObject.GetComponent<BoxCollider>().enabled = false;
 
-            //gameObject.tag = "Untagged";
-
-            enemyHitLocation = new Vector3(other.contacts[0].point.x, 1, other.contacts[0].point.z);
-            Vector3 midpoint = (enemyHitLocation + transform.position) / 2;
+            //enemyHitLocation = new Vector3(other.contacts[0].point.x, 1, other.contacts[0].point.z);
+            //Vector3 midpoint = (enemyHitLocation + transform.position) / 2;
 
             if (deathChoice == 0)
             {
-                //Instantiate(shatterPrefab, transform.position, transform.rotation);
-
-                Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
             }
 
             if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 0)
             {
-                //Instantiate(shatterPrefab, transform.position, transform.rotation);
-
-                Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
             }
 
             if (deathChoice == 0 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
             {
-                //Instantiate(shatterPrefab, transform.position, transform.rotation);
-
-                Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
+                Instantiate(explosionPrefab, transform.position, transform.rotation);
             }
 
             if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
             {
-                //Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
-
-                Instantiate(shatterPrefab, midpoint, transform.rotation);
+                Instantiate(shatterPrefab, transform.position, transform.rotation);
             }
-
-
 
             Destroy(gameObject);
         }
@@ -99,6 +87,8 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Explosion"))
         {
+            //Instantiate(explosionPrefab, transform.position, transform.rotation);
+
             Destroy(gameObject);
         }
     }

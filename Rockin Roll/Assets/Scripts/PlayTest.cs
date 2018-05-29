@@ -7,12 +7,11 @@ public class PlayTest : MonoBehaviour
     public SpawnManager spawnManager;
 
     public EnemyStats enemyStats;
-    public int enemyToggle;
 
     // Use this for initialization
     void Start()
     {
-        enemyToggle = 1;
+        
     }
 
     // Update is called once per frame
