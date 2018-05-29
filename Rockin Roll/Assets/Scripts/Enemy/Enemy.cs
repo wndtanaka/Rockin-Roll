@@ -4,16 +4,19 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public Transform startPos, goTo;
+    public int moveSpeed;
 
-    public float moveSpeed;
+    public EnemyStats enemyStats;
+
+    void Awake()
+    {
+        enemyStats = GameObject.Find("GameManager").GetComponent<EnemyStats>();
+    }
 
     // Use this for initialization
     void Start()
     {
-        startPos = gameObject.transform;
-
-        moveSpeed = 4f;
+        moveSpeed = enemyStats.enemyMoveSpeed;
     }
 
     // Update is called once per frame

@@ -12,11 +12,15 @@ public class SpawnManager : MonoBehaviour
 
     public bool spawnManagerHasActivatedSpawner;
 
+    public int spawnerAmount;
+
     // Use this for initialization
     void Start()
     {
         spawnManagerInterval = 1f;
         spawnManagerHasActivatedSpawner = false;
+
+        spawnerAmount = 1;
     }
 
     // Update is called once per frame
@@ -24,7 +28,10 @@ public class SpawnManager : MonoBehaviour
     {
         if (spawnManagerHasActivatedSpawner == false)
         {
-            StartCoroutine(RandomSpawnerIenumerator());
+            for (int i = 0; i < spawnerAmount; i++)
+            {
+                StartCoroutine(RandomSpawnerIenumerator());
+            }
         }
     }
 
