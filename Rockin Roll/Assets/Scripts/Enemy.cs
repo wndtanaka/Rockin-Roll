@@ -20,6 +20,13 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
-        transform.Translate(Vector3.right * (Time.deltaTime * moveSpeed/2));
+    }
+
+    void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("Enemy.cs: Enemy hit Player!");
+        }
     }
 }
