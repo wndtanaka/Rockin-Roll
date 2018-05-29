@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,19 +7,19 @@ public class PlayerController : MonoBehaviour
 {
     Vector3[] transformDirection = new Vector3[] { Vector3.forward, Vector3.right, Vector3.back, Vector3.left };
 
-    public float speed = 2;
+    public float speed = 20;
 
     int index = 0;
     Rigidbody rb;
     bool reverseDirection = false;
 
-    // Use this for initialization
+    // Use this for initialization 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
+    // Update is called once per frame 
     void Update()
     {
         if (!reverseDirection)
@@ -62,4 +62,3 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
-
