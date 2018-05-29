@@ -13,9 +13,9 @@ public class Spawner : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        hasSpawned = false;
+        hasSpawned = true;
         spawnAmount = 1;
-        spawnInterval = 2f;
+        spawnInterval = 2f;       
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     {
         if (hasSpawned == false)
         {
-            StartCoroutine(SpawnNow());
+            SpawnEnemies();
         }
     }
 
@@ -32,17 +32,8 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < spawnAmount; i++)
         {
             Instantiate(enemies[0], transform.position, transform.rotation);
+
+            hasSpawned = true;
         }
-    }
-
-    IEnumerator SpawnNow()
-    {
-        hasSpawned = true;
-
-        yield return new WaitForSeconds(spawnInterval);
-
-        SpawnEnemies();
-
-        hasSpawned = false;
     }
 }
