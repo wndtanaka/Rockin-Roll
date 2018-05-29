@@ -12,7 +12,9 @@ public class Enemy : MonoBehaviour
 
     public Vector3 enemyHitLocation;
 
-    public GameObject explosionPrefab;
+    public GameObject explosionPrefab, shatterPrefab;
+
+    public int randomDeath;
 
     void Awake()
     {
@@ -26,6 +28,8 @@ public class Enemy : MonoBehaviour
         rotationAngle = enemyStats.enemyRotation;
 
         transform.Rotate(new Vector3(0,rotationAngle,0));
+
+        randomDeath = Random.Range(0, 2);
     }
 
     // Update is called once per frame
@@ -43,11 +47,19 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            enemyHitLocation = other.contacts[0].point;
+            enemyHitLocation = new Vector3(other.contacts[0].point.x, 1, other.contacts[0].point.z);
 
             //Debug.Log(enemyHitLocation);
 
-            Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
+            if (randomDeath == 0)
+            {
+                Instantiate(explosionPrefab, enemyHitLocation, transform.rotation);
+            }
+
+            if (randomDeath == 1)
+            {
+                Instantiate(shatterPrefab, enemyHitLocation, Quaternion.identity);
+            }
 
             Destroy(gameObject);
         }
