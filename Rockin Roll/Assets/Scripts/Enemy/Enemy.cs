@@ -57,24 +57,24 @@ public class Enemy : MonoBehaviour
             //enemyHitLocation = new Vector3(other.contacts[0].point.x, 1, other.contacts[0].point.z);
             //Vector3 midpoint = (enemyHitLocation + transform.position) / 2;
 
-            if (deathChoice == 0)
+            if (deathChoice == 0 && other.gameObject.GetComponent<Enemy>().deathChoice == 0)
             {
-                Instantiate(explosionPrefab, transform.position, transform.rotation);
+                Instantiate(shatterPrefab, transform.position, transform.rotation);
             }
 
             if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 0)
             {
-                Instantiate(explosionPrefab, transform.position, transform.rotation);
+                Instantiate(shatterPrefab, transform.position, transform.rotation);
             }
 
             if (deathChoice == 0 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
             {
-                Instantiate(explosionPrefab, transform.position, transform.rotation);
+                Instantiate(shatterPrefab, transform.position, transform.rotation);
             }
 
             if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
             {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             }
 
             Destroy(gameObject);
