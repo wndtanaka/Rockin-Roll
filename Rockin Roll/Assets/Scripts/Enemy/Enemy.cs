@@ -38,6 +38,11 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
     }
 
+    void OnDeath()
+    {
+        
+    }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -58,7 +63,7 @@ public class Enemy : MonoBehaviour
 
             if (randomDeath == 1)
             {
-                Instantiate(shatterPrefab, enemyHitLocation, Quaternion.identity);
+                Instantiate(shatterPrefab, transform.position, transform.rotation);
             }
 
             Destroy(gameObject);

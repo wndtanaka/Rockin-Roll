@@ -17,7 +17,6 @@ public class Shatter : MonoBehaviour
     void Start()
     {
         moveSpeed = enemyStats.enemyMoveSpeed;
-        moveSpeed = moveSpeed * 2;
     }
 
     // Update is called once per frame
@@ -44,6 +43,19 @@ public class Shatter : MonoBehaviour
         }
 
         if (other.gameObject.CompareTag("Shatter"))
+        {
+            Destroy(gameObject);
+        }
+
+        if (other.gameObject.CompareTag("Explosion"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Explosion"))
         {
             Destroy(gameObject);
         }
