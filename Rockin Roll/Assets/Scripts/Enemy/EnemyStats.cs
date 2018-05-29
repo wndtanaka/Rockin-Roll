@@ -18,8 +18,6 @@ public class EnemyStats : MonoBehaviour
         enemyMoveSpeed = 4;
         randomRotationOn = false;
         enemyRotation = 0;
-
-               
     }
 
     // Update is called once per frame
@@ -33,7 +31,7 @@ public class EnemyStats : MonoBehaviour
 
     void RandomRotateFunction()
     {
-        int currentRandom = Random.Range(0,randomRotationChoice.Length);
+        int currentRandom = Random.Range(0, randomRotationChoice.Length);
 
         enemyRotation = randomRotationChoice[currentRandom];
     }

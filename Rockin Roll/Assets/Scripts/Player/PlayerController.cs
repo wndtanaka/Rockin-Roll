@@ -1,8 +1,7 @@
-﻿﻿using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
 public class PlayerController : MonoBehaviour
 {
     Vector3[] transformDirection = new Vector3[] { Vector3.forward, Vector3.right, Vector3.back, Vector3.left };
@@ -10,19 +9,12 @@ public class PlayerController : MonoBehaviour
     public float speed = 20;
 
     int index = 0;
-    Rigidbody rb;
-    bool reverseDirection = false;
+    bool changeDirection = false;
 
-    // Use this for initialization 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-    }
-
-    // Update is called once per frame 
     void Update()
     {
-        if (!reverseDirection)
+        #region Player Controller
+        if (!changeDirection)
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -38,7 +30,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                reverseDirection = !reverseDirection;
+                changeDirection = !changeDirection;
             }
         }
         else
@@ -57,8 +49,29 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKeyUp(KeyCode.Space))
             {
-                reverseDirection = !reverseDirection;
+                changeDirection = !changeDirection;
             }
+        }
+        #endregion
+
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Enemy":
+                UIManager.isDead = true;
+                Destroy(gameObject);
+                break;
+            case "Explosion":
+                UIManager.isDead = true;
+                Destroy(gameObject);
+                break;
+            case "Shatter":
+                UIManager.isDead = true;
+                Destroy(gameObject);
+                break;
         }
     }
 }
