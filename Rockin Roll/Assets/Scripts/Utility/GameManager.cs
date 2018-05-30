@@ -27,4 +27,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private Timer m_Timer;
+    public Timer Timer
+    {
+        get
+        {
+            if (m_Timer == null)
+            {
+                m_Timer = gameObject.GetComponent<Timer>();
+            }
+            return m_Timer;
+        }
+    }
+
 }

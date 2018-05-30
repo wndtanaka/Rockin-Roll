@@ -9,9 +9,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
-    public void OptionsButton()
+    public void HallOfFameButton()
     {
-        SceneManager.LoadScene("OptionsScene");
+        SceneManager.LoadScene("HallOfFameScene");
     }
     public void QuitButton()
     {

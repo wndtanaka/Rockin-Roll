@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Bonus : MonoBehaviour
 {
+    public ItemType itemType;
+
     public int moveSpeed;
 
     public bool startEnemyDestroy;
@@ -33,8 +35,23 @@ public class Bonus : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Debug.Log("Bonus.cs: Player gets Extra Points!");
-
-            Score.playerScore = Score.playerScore + bonusPoints;
+            switch (itemType)
+            {
+                case ItemType.Bonus:
+                    Score.playerScore = Score.playerScore + bonusPoints;
+                    break;
+                case ItemType.Shield:
+                    // TODO Give player shield
+                    break;
+                case ItemType.Invisibility:
+                    // TODO Give player invisibility for several seconds
+                    break;
+                case ItemType.SlowMotion:
+                    // TODO Slow enemy movement for several seconds
+                    break;
+                default:
+                    break;
+            }
 
             Difficulty.bonusSpawned = false;
 

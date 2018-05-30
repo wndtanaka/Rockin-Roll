@@ -7,7 +7,6 @@ public class Difficulty : MonoBehaviour
     [Header("Scripts")]
     public SpawnManager spawnManager;
     public EnemyStats enemyStats;
-    public UIManager uiManager;
 
     [Header("Difficulty-Timer")]
     public float diffTimer;
@@ -137,7 +136,7 @@ public class Difficulty : MonoBehaviour
 
     void TimerCount()
     {
-        if (UIManager.isDead != true && uiManager.isPaused != true)
+        if (UIManager.isDead != true && UIManager.isPaused != true)
         {
             diffTimer = diffTimer + 1 * Time.deltaTime;
         }

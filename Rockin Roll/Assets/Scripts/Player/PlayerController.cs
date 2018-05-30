@@ -9,9 +9,13 @@ public class PlayerController : MonoBehaviour
     public float speed = 20;
 
     int index = 0;
-    bool changeDirection = false;
+    public static bool changeDirection = false;
+    public static bool reverseDirection = false;
 
     InputController inputController;
+
+    // creating delegate function to handle reverse array
+    public event OnReverseDirection onReverseDirection;
 
     private void Start()
     {
@@ -20,47 +24,24 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        #region Player Controller
-        if (!changeDirection)
-        {
-            if (inputController.MoveIndex)
-            {
-                index++;
-                if (index >= transformDirection.Length)
-                {
-                    index = 0;
-                }
-            }
-            if (inputController.Move)
-            {
-                transform.Translate(transformDirection[index] * speed * Time.deltaTime);
-            }
-            if (inputController.ChangeDirection)
-            {
-                changeDirection = !changeDirection;
-            }
-        }
-        else
-        {
-            if (inputController.MoveIndex)
-            {
-                index++;
-                if (index >= transformDirection.Length)
-                {
-                    index = 0;
-                }
-            }
-            if (inputController.Move)
-            {
-                transform.Translate(transformDirection[index] * speed * Time.deltaTime);
-            }
-            if (inputController.ChangeDirection)
-            {
-                changeDirection = !changeDirection;
-            }
-        }
-        #endregion
+        PlayerMovement();
+    }
 
+    void PlayerMovement()
+    {
+        //space key down
+        if (inputController.MoveIndex)
+        {
+            index++;
+            if (index >= transformDirection.Length)
+            {
+                index = 0;
+            }
+        }
+        if (inputController.Move)
+        {
+            transform.Translate(transformDirection[index] * speed * Time.deltaTime);
+        }
     }
 
     private void OnCollisionEnter(Collision other)
@@ -76,8 +57,11 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case "Shatter":
-                UIManager.isDead = true;
-                Destroy(gameObject);
+                // call the subscribed function
+                onReverseDirection.Invoke();
+                // reverse array
+                System.Array.Reverse(transformDirection);
+                Destroy(other.gameObject);
                 break;
         }
     }

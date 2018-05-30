@@ -9,14 +9,22 @@ public class UIManager : MonoBehaviour
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
     public Text counterText;
+    // both from Game Over gameobject
+    public Text yourScore;
+    public Text highScore;
 
     public static bool isDead = false;
-    public bool isPaused = false;
+    public static bool isPaused = false;
 
     float waitCounter = 3;
 
+    Score score;
+
+    public static event OnUpdateHighScore onUpdateHighScore;
+
     private void Start()
     {
+        score = GetComponent<Score>();
         isDead = false;
     }
 
@@ -28,7 +36,10 @@ public class UIManager : MonoBehaviour
         }
         if (isDead)
         {
+            onUpdateHighScore.Invoke();
             gameOverMenu.SetActive(true);
+            yourScore.text = "Your Score: " + score.showScore.ToString();
+            highScore.text = "High Score: " + score.highScore.ToString();
         }
         if (GameManager.Instance.InputController.Pause && !isPaused)
         {
