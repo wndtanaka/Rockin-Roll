@@ -24,7 +24,7 @@ public class Explosion : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Explosion.cs: Explosion hit Player!");
+            //Debug.Log("Explosion.cs: Explosion hit Player!");
         }
     }
 }

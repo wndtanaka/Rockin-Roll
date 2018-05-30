@@ -17,10 +17,10 @@ public class SpawnManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        spawnManagerInterval = 1f;
+        spawnManagerInterval = 4f;
         spawnManagerHasActivatedSpawner = false;
 
-        spawnerAmount = 1;
+        spawnerAmount = 4;
     }
 
     // Update is called once per frame

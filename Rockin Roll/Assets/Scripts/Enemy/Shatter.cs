@@ -39,7 +39,7 @@ public class Shatter : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Shatter.cs: Shatter hit Player!");
+            //Debug.Log("Shatter.cs: Shatter hit Player!");
         }
 
         if (other.gameObject.CompareTag("Shatter"))

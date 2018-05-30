@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     public Text counterText;
 
     public static bool isDead = false;
-    private bool isPaused = false;
+    public bool isPaused = false;
 
     float waitCounter = 3;
 
