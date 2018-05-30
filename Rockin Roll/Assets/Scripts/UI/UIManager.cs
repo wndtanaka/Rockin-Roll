@@ -37,6 +37,8 @@ public class UIManager : MonoBehaviour
         if (isDead)
         {
             onUpdateHighScore.Invoke();
+            score.scoreboard.gameObject.SetActive(false);
+            score.highScoreBoard.gameObject.SetActive(false);
             gameOverMenu.SetActive(true);
             yourScore.text = "Your Score: " + score.showScore.ToString();
             highScore.text = "High Score: " + score.highScore.ToString();
