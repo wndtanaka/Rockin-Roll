@@ -95,9 +95,9 @@ public class Enemy : MonoBehaviour
             deathChoice = 1;
         }
 
-        if (other.gameObject.CompareTag("WallCollider"))
-        {
-            Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
-        }
+        //if (other.gameObject.CompareTag("WallCollider"))
+        //{
+        //    Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
+        //}
     }
 }
