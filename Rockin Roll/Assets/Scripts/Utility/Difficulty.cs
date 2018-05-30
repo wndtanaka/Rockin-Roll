@@ -9,8 +9,11 @@ public class Difficulty : MonoBehaviour
     public EnemyStats enemyStats;
     public UIManager uiManager;
 
-    [Header("Score-Timer")]
-    public float scoreTimer;
+    [Header("Difficulty-Timer")]
+    public float diffTimer;
+
+    [Header("Bonus Check")]
+    public static bool bonusSpawned;
 
     [Header("Wave 2")]
     public float wave2Time;
@@ -29,7 +32,7 @@ public class Difficulty : MonoBehaviour
 
     [Header("Wave 5")]
     public float wave5Time;
-    public bool wave5On;
+    public static bool wave5On;
     public int wave5Spawner;
 
     [Header("Wave 6")]
@@ -39,7 +42,7 @@ public class Difficulty : MonoBehaviour
 
     [Header("Wave 7")]
     public float wave7Time;
-    public bool wave7On;
+    public static bool wave7On;
     public int wave7SpawnInterval;
 
     [Header("Wave 8")]
@@ -83,7 +86,7 @@ public class Difficulty : MonoBehaviour
 
     void StartConditions()
     {
-        scoreTimer = 0f;
+        diffTimer = 0f;
 
         wave2On = false;
         wave2Time = 10f;
@@ -128,19 +131,21 @@ public class Difficulty : MonoBehaviour
         wave12On = false;
         wave12Time = 90f;
         wave12EnemySpeed = 8;
+
+        bonusSpawned = false;
     }
 
     void TimerCount()
     {
         if (UIManager.isDead != true && uiManager.isPaused != true)
         {
-            scoreTimer = scoreTimer + 1 * Time.deltaTime;
+            diffTimer = diffTimer + 1 * Time.deltaTime;
         }
     }
 
     void Waves()
     {
-        if (scoreTimer >= wave2Time && wave2On == false)
+        if (diffTimer >= wave2Time && wave2On == false)
         {
             spawnManager.spawnerAmount = wave2Spawner;
 
@@ -149,7 +154,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
         }
 
-        if (scoreTimer >= wave3Time && wave3On == false)
+        if (diffTimer >= wave3Time && wave3On == false)
         {
             enemyStats.enemyMoveSpeed = wave3EnemySpeed;
 
@@ -158,7 +163,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
         }
 
-        if (scoreTimer >= wave4Time && wave4On == false)
+        if (diffTimer >= wave4Time && wave4On == false)
         {
             spawnManager.spawnManagerInterval = wave4SpawnInterval;
 
@@ -167,7 +172,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("spawnManagerInterval = " + spawnManager.spawnManagerInterval);
         }
 
-        if (scoreTimer >= wave5Time && wave5On == false)
+        if (diffTimer >= wave5Time && wave5On == false)
         {
             spawnManager.spawnerAmount = wave5Spawner;
 
@@ -176,7 +181,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
         }
 
-        if (scoreTimer >= wave6Time && wave6On == false)
+        if (diffTimer >= wave6Time && wave6On == false)
         {
             enemyStats.enemyMoveSpeed = wave6EnemySpeed;
 
@@ -185,7 +190,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
         }
 
-        if (scoreTimer >= wave7Time && wave7On == false)
+        if (diffTimer >= wave7Time && wave7On == false)
         {
             spawnManager.spawnManagerInterval = wave7SpawnInterval;
 
@@ -194,7 +199,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("spawnManagerInterval = " + spawnManager.spawnManagerInterval);
         }
 
-        if (scoreTimer >= wave8Time && wave8On == false)
+        if (diffTimer >= wave8Time && wave8On == false)
         {
             spawnManager.spawnerAmount = wave8Spawner;
 
@@ -203,7 +208,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
         }
 
-        if (scoreTimer >= wave9Time && wave9On == false)
+        if (diffTimer >= wave9Time && wave9On == false)
         {
             enemyStats.enemyMoveSpeed = wave9EnemySpeed;
 
@@ -212,7 +217,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
         }
 
-        if (scoreTimer >= wave10Time && wave10On == false)
+        if (diffTimer >= wave10Time && wave10On == false)
         {
             spawnManager.spawnManagerInterval = wave10SpawnInterval;
 
@@ -221,7 +226,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("spawnManagerInterval = " + spawnManager.spawnManagerInterval);
         }
 
-        if (scoreTimer >= wave11Time && wave11On == false)
+        if (diffTimer >= wave11Time && wave11On == false)
         {
             spawnManager.spawnerAmount = wave11Spawner;
 
@@ -230,7 +235,7 @@ public class Difficulty : MonoBehaviour
             Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
         }
 
-        if (scoreTimer >= wave12Time && wave12On == false)
+        if (diffTimer >= wave12Time && wave12On == false)
         {
             enemyStats.enemyMoveSpeed = wave12EnemySpeed;
 

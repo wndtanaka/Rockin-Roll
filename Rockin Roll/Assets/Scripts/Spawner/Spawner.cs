@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     {
         hasSpawned = true;
         spawnAmount = 1;
-        spawnInterval = 2f;       
+        spawnInterval = 2f;
     }
 
     // Update is called once per frame
@@ -31,6 +31,15 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < spawnAmount; i++)
         {
+            if (Difficulty.bonusSpawned == false && Difficulty.wave5On == true)
+            {
+                Instantiate(enemies[1], transform.position, transform.rotation);
+
+                Difficulty.bonusSpawned = true;
+
+                return;
+            }
+
             Instantiate(enemies[0], transform.position, transform.rotation);
 
             hasSpawned = true;
