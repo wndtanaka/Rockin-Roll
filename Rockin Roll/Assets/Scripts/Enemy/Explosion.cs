@@ -27,4 +27,12 @@ public class Explosion : MonoBehaviour
             //Debug.Log("Explosion.cs: Explosion hit Player!");
         }
     }
+
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("WallCollider"))
+        {
+            Physics.IgnoreCollision(other.gameObject.GetComponent<BoxCollider>(), gameObject.GetComponent<BoxCollider>());
+        }
+    }
 }

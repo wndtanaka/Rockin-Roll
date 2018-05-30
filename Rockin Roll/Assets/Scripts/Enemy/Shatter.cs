@@ -59,5 +59,10 @@ public class Shatter : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if (other.gameObject.CompareTag("WallCollider"))
+        {
+            Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
+        }
     }
 }

@@ -38,11 +38,6 @@ public class Enemy : MonoBehaviour
         transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
     }
 
-    void OnDeath()
-    {
-        
-    }
-
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.CompareTag("Player"))
@@ -98,6 +93,11 @@ public class Enemy : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyHeadOn"))
         {
             deathChoice = 1;
+        }
+
+        if (other.gameObject.CompareTag("WallCollider"))
+        {
+            Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
         }
     }
 }
