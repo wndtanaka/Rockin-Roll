@@ -8,6 +8,8 @@ public class Bonus : MonoBehaviour
 
     public bool startEnemyDestroy;
 
+    public float bonusPoints;
+
     // Use this for initialization
     void Start()
     {
@@ -16,6 +18,8 @@ public class Bonus : MonoBehaviour
         moveSpeed = 4;
 
         startEnemyDestroy = true;
+
+        bonusPoints = 10f;
     }
 
     // Update is called once per frame
@@ -28,7 +32,9 @@ public class Bonus : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Bonus.cs: Player gets Extra Points!");
+            //Debug.Log("Bonus.cs: Player gets Extra Points!");
+
+            Score.playerScore = Score.playerScore + bonusPoints;
 
             Difficulty.bonusSpawned = false;
 
