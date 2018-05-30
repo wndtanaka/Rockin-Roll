@@ -57,12 +57,18 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case "Shatter":
-                // call the subscribed function
-                onReverseDirection.Invoke();
-                // reverse array
-                System.Array.Reverse(transformDirection);
                 Destroy(other.gameObject);
+                StartCoroutine(ReverseDirection());
                 break;
         }
+    }
+
+    IEnumerator ReverseDirection()
+    {
+        yield return new WaitUntil(() => inputController.ChangeDirection);
+        // call the subscribed function
+        onReverseDirection.Invoke();
+        // reverse array
+        System.Array.Reverse(transformDirection);
     }
 }
