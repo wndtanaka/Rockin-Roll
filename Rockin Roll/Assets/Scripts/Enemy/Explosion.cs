@@ -6,12 +6,20 @@ public class Explosion : MonoBehaviour
 {
     public float explosionDoneSeconds;
 
+    public Material[] exMats;
+
+    public int randomMat;
+
     // Use this for initialization
     void Start()
     {
-        explosionDoneSeconds = 1f;
+        randomMat = Random.Range(0,3);
 
-        Destroy(gameObject, 1f);
+        gameObject.GetComponent<MeshRenderer>().material = exMats[randomMat];
+
+        explosionDoneSeconds = Random.Range(.25f,.75f);
+
+        Destroy(gameObject, explosionDoneSeconds);
     }
 
     // Update is called once per frame
