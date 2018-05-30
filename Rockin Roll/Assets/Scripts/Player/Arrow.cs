@@ -11,8 +11,6 @@ public class Arrow : MonoBehaviour
 
     PlayerController playerController;
 
-
-
     void Start()
     {
         // getting PlayerController in parent
@@ -42,7 +40,7 @@ public class Arrow : MonoBehaviour
     }
 
     void OnReverseDirection()
-    {      
+    {
         // reverse array
         System.Array.Reverse(angle);
         currentAngle += 2;
@@ -59,5 +57,4 @@ public class Arrow : MonoBehaviour
             rightCircle.SetActive(true);
         }
     }
-
 }

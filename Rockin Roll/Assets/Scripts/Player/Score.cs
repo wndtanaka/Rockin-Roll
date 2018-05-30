@@ -45,7 +45,7 @@ public class Score : MonoBehaviour
 
         Scoring();
 
-        showScore = Mathf.Floor(playerScore);
+        showScore = Mathf.Round(playerScore * 10f) / 10f;
 
         //HighScoreCheck();
         scoreboard.text = "Score: " + showScore.ToString();
