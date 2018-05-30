@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Arrow : MonoBehaviour
 {
+    public GameObject rightCircle, leftCircle;
+
     public int[] angle;
     public int currentAngle;
 
     PlayerController playerController;
+
+
 
     void Start()
     {
@@ -38,10 +42,22 @@ public class Arrow : MonoBehaviour
     }
 
     void OnReverseDirection()
-    {
+    {      
         // reverse array
         System.Array.Reverse(angle);
         currentAngle += 2;
+
+        if (rightCircle.activeSelf == true)
+        {
+            leftCircle.SetActive(true);
+            rightCircle.SetActive(false);
+        }
+
+        else
+        {
+            leftCircle.SetActive(false);
+            rightCircle.SetActive(true);
+        }
     }
 
 }

@@ -150,7 +150,7 @@ public class Difficulty : MonoBehaviour
 
             wave2On = true;
 
-            Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
+            //Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
         }
 
         if (diffTimer >= wave3Time && wave3On == false)
@@ -159,7 +159,7 @@ public class Difficulty : MonoBehaviour
 
             wave3On = true;
 
-            Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
+            //Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
         }
 
         if (diffTimer >= wave4Time && wave4On == false)
@@ -168,7 +168,7 @@ public class Difficulty : MonoBehaviour
 
             wave4On = true;
 
-            Debug.Log("spawnManagerInterval = " + spawnManager.spawnManagerInterval);
+            //Debug.Log("spawnManagerInterval = " + spawnManager.spawnManagerInterval);
         }
 
         if (diffTimer >= wave5Time && wave5On == false)
@@ -177,7 +177,7 @@ public class Difficulty : MonoBehaviour
 
             wave5On = true;
 
-            Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
+            //Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
         }
 
         if (diffTimer >= wave6Time && wave6On == false)
@@ -186,7 +186,7 @@ public class Difficulty : MonoBehaviour
 
             wave6On = true;
 
-            Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
+            //Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
         }
 
         if (diffTimer >= wave7Time && wave7On == false)
@@ -195,7 +195,7 @@ public class Difficulty : MonoBehaviour
 
             wave7On = true;
 
-            Debug.Log("spawnManagerInterval = " + spawnManager.spawnManagerInterval);
+            //Debug.Log("spawnManagerInterval = " + spawnManager.spawnManagerInterval);
         }
 
         if (diffTimer >= wave8Time && wave8On == false)
@@ -204,7 +204,7 @@ public class Difficulty : MonoBehaviour
 
             wave8On = true;
 
-            Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
+            //Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
         }
 
         if (diffTimer >= wave9Time && wave9On == false)
@@ -213,7 +213,7 @@ public class Difficulty : MonoBehaviour
 
             wave9On = true;
 
-            Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
+            //Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
         }
 
         if (diffTimer >= wave10Time && wave10On == false)
@@ -222,7 +222,7 @@ public class Difficulty : MonoBehaviour
 
             wave10On = true;
 
-            Debug.Log("spawnManagerInterval = " + spawnManager.spawnManagerInterval);
+            //Debug.Log("spawnManagerInterval = " + spawnManager.spawnManagerInterval);
         }
 
         if (diffTimer >= wave11Time && wave11On == false)
@@ -231,7 +231,7 @@ public class Difficulty : MonoBehaviour
 
             wave11On = true;
 
-            Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
+            //Debug.Log("spawnerAmount = " + spawnManager.spawnerAmount);
         }
 
         if (diffTimer >= wave12Time && wave12On == false)
@@ -240,7 +240,7 @@ public class Difficulty : MonoBehaviour
 
             wave12On = true;
 
-            Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
+            //Debug.Log("enemyMoveSpeed = " + enemyStats.enemyMoveSpeed);
         }
     }
 }

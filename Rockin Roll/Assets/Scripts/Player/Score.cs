@@ -35,7 +35,7 @@ public class Score : MonoBehaviour
 
         UIManager.onUpdateHighScore += HighScoreCheck;
 
-        Debug.Log("High Score is " + highScore);
+        //Debug.Log("High Score is " + highScore);
     }
 
     // Update is called once per frame
