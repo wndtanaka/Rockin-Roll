@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     public static bool isGameStart = false;
     public static bool isDead = false;
     public static bool isPaused = false;
+    public static bool isAlive = false;
 
     float waitCounter = 3;
 
@@ -24,16 +25,18 @@ public class UIManager : MonoBehaviour
 
     public static event OnUpdateHighScore onUpdateHighScore;
 
-    private void Start()
+    private void Awake()
     {
         score = GetComponent<Score>();
         isDead = false;
+        isAlive = false;
     }
 
     private void Update()
     {
         if (!isGameStart && Input.GetKeyDown(KeyCode.Space))
         {
+            isAlive = true;
             score.scoreboard.gameObject.SetActive(true);
             score.highScoreBoard.gameObject.SetActive(true);
             isGameStart = true;

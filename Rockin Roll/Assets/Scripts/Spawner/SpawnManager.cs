@@ -26,7 +26,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (UIManager.isGameStart)
+        if (UIManager.isAlive)
         {
             if (spawnManagerHasActivatedSpawner == false)
             {
@@ -36,7 +36,6 @@ public class SpawnManager : MonoBehaviour
                 }
             }
         }
-
     }
 
     void RandomSpawnerChoice()
