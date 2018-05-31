@@ -54,7 +54,7 @@ public class Score : MonoBehaviour
 
     void Scoring()
     {
-        if ((Input.GetKey(KeyCode.Space)) && UIManager.isDead != true && UIManager.isPaused != true)
+        if (GameManager.Instance.InputController.Move && UIManager.isDead != true && UIManager.isPaused != true)
         {
             inputWaitTimer = inputWaitTimer + 1 * Time.deltaTime;
 

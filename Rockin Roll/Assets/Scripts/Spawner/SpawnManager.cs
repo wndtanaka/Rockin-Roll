@@ -26,18 +26,22 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnManagerHasActivatedSpawner == false)
+        if (UIManager.isGameStart)
         {
-            for (int i = 0; i < spawnerAmount; i++)
+            if (spawnManagerHasActivatedSpawner == false)
             {
-                StartCoroutine(RandomSpawnerIenumerator());
+                for (int i = 0; i < spawnerAmount; i++)
+                {
+                    StartCoroutine(RandomSpawnerIenumerator());
+                }
             }
         }
+
     }
 
     void RandomSpawnerChoice()
     {
-        randomSpawnerInt = Random.Range(0,spawners.Length);
+        randomSpawnerInt = Random.Range(0, spawners.Length);
     }
 
     IEnumerator RandomSpawnerIenumerator()

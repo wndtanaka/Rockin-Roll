@@ -8,11 +8,13 @@ public class UIManager : MonoBehaviour
 {
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
+    public GameObject howToPlayMenu;
     public Text counterText;
     // both from Game Over gameobject
     public Text yourScore;
     public Text highScore;
 
+    public static bool isGameStart = false;
     public static bool isDead = false;
     public static bool isPaused = false;
 
@@ -30,12 +32,20 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+        if (!isGameStart && Input.GetKeyDown(KeyCode.Space))
+        {
+            score.scoreboard.gameObject.SetActive(true);
+            score.highScoreBoard.gameObject.SetActive(true);
+            isGameStart = true;
+            howToPlayMenu.SetActive(false);
+        }
         if (isPaused)
         {
             GameManager.Instance.InputController.enabled = false;
         }
         if (isDead)
         {
+            isGameStart = false;
             onUpdateHighScore.Invoke();
             score.scoreboard.gameObject.SetActive(false);
             score.highScoreBoard.gameObject.SetActive(false);

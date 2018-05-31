@@ -34,7 +34,7 @@ public class GameManager : MonoBehaviour
         {
             if (m_Timer == null)
             {
-                m_Timer = gameObject.GetComponent<Timer>();
+                m_Timer = GetComponent<Timer>();
             }
             return m_Timer;
         }
