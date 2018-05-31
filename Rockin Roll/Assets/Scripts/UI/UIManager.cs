@@ -25,7 +25,7 @@ public class UIManager : MonoBehaviour
 
     public static event OnUpdateHighScore onUpdateHighScore;
 
-    private void Awake()
+    private void Start()
     {
         score = GetComponent<Score>();
         isDead = false;
@@ -76,6 +76,14 @@ public class UIManager : MonoBehaviour
 
     public void MainMenuButton()
     {
+        if (isPaused)
+        {
+            Time.timeScale = 1;
+            GameManager.Instance.InputController.enabled = true;
+            isPaused = !isPaused;
+            isGameStart = !isGameStart;
+        }
+
         SceneManager.LoadScene("MainMenu");
     }
 
