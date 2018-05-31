@@ -36,6 +36,8 @@ public class UIManager : MonoBehaviour
     {
         if (!isGameStart && Input.GetKeyDown(KeyCode.Space))
         {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
             isAlive = true;
             score.scoreboard.gameObject.SetActive(true);
             score.highScoreBoard.gameObject.SetActive(true);
@@ -44,6 +46,8 @@ public class UIManager : MonoBehaviour
         }
         if (isPaused)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             GameManager.Instance.InputController.enabled = false;
         }
         if (isDead)
@@ -55,18 +59,22 @@ public class UIManager : MonoBehaviour
             gameOverMenu.SetActive(true);
             yourScore.text = "Your Score: " + score.showScore.ToString();
             highScore.text = "High Score: " + score.highScore.ToString();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
-        if (GameManager.Instance.InputController.Pause && !isPaused)
+        if (GameManager.Instance.InputController.Pause && !isPaused && isGameStart)
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0;
             isPaused = !isPaused;
             return;
         }
-        if (GameManager.Instance.InputController.Pause && isPaused)
-        {
-            StartCoroutine(ResumeGame());
-        }
+        //if (GameManager.Instance.InputController.Pause && isPaused)
+        //{
+        //    Cursor.visible = false;
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    StartCoroutine(ResumeGame());
+        //}
     }
 
     public void PlayAgainButton()
@@ -88,7 +96,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void ResumeButton()
-    {
+    { 
         StartCoroutine(ResumeGame());
     }
 
@@ -107,5 +115,7 @@ public class UIManager : MonoBehaviour
         GameManager.Instance.InputController.enabled = true;
         isPaused = !isPaused;
         counterText.gameObject.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
