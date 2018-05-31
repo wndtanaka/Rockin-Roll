@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviour
     private Timer m_Timer;
     public Timer Timer
     {
+        // getting Timer script
         get
         {
             if (m_Timer == null)
@@ -37,6 +38,20 @@ public class GameManager : MonoBehaviour
                 m_Timer = GetComponent<Timer>();
             }
             return m_Timer;
+        }
+    }
+
+    private Respawner m_Respawner;
+    public Respawner Respawner
+    {
+        // getting Respawner script component
+        get
+        {
+            if (m_Respawner == null)
+            {
+                m_Respawner = gameObject.GetComponent<Respawner>();
+            }
+            return m_Respawner;
         }
     }
 

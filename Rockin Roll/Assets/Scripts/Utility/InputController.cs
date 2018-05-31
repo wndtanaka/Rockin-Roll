@@ -8,6 +8,7 @@ public class InputController : MonoBehaviour
     public bool ChangeDirection;
     public bool MoveIndex;
     public bool Pause;
+    public bool Escape;
 
     private void Update()
     {

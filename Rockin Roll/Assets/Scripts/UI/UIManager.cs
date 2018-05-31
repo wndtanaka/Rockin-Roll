@@ -63,7 +63,7 @@ public class UIManager : MonoBehaviour
             isPaused = !isPaused;
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Escape) && isPaused)
+        if (GameManager.Instance.InputController.Pause && isPaused)
         {
             StartCoroutine(ResumeGame());
         }
