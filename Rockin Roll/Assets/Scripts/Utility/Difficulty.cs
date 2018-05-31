@@ -136,7 +136,7 @@ public class Difficulty : MonoBehaviour
 
     void TimerCount()
     {
-        if (UIManager.isDead != true && UIManager.isPaused != true)
+        if (UIManager.isDead != true && UIManager.isPaused != true & UIManager.isGameStart == true)
         {
             diffTimer = diffTimer + 1 * Time.deltaTime;
         }
