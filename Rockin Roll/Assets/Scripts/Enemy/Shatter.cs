@@ -17,6 +17,11 @@ public class Shatter : MonoBehaviour
     void Start()
     {
         moveSpeed = enemyStats.enemyMoveSpeed;
+
+        if (CameraShake.exShake == false && CameraShake.shatterShake == false)
+        {
+            CameraShake.shatterShake = true;
+        }
     }
 
     // Update is called once per frame

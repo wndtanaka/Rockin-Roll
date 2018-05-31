@@ -13,11 +13,16 @@ public class Explosion : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        randomMat = Random.Range(0,3);
+        randomMat = Random.Range(0, 3);
 
         gameObject.GetComponent<MeshRenderer>().material = exMats[randomMat];
 
-        explosionDoneSeconds = Random.Range(.25f,.75f);
+        explosionDoneSeconds = Random.Range(.25f, .75f);
+
+        if (CameraShake.exShake == false)
+        {
+            CameraShake.exShake = true;
+        }
 
         Destroy(gameObject, explosionDoneSeconds);
     }
