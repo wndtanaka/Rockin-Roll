@@ -16,6 +16,12 @@ public class Enemy : MonoBehaviour
 
     public int deathChoice;
 
+    public Vector3 startPos;
+    public bool buggyX, buggyZ, isBugging, bugFlash;
+    public Material[] enemyMats;
+    public Renderer rend;
+    public float startSpeed, testSpeed;
+
     void Awake()
     {
         enemyStats = GameObject.Find("GameManager").GetComponent<EnemyStats>();
@@ -30,12 +36,52 @@ public class Enemy : MonoBehaviour
         transform.Rotate(new Vector3(0,rotationAngle,0));
 
         deathChoice = 0;
+
+        startPos = transform.localPosition;
+        buggyX = false;
+        buggyZ = false;
+        isBugging = false;
+        rend = gameObject.GetComponent<MeshRenderer>();
+        bugFlash = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
+
+        BuggyFunction();
+    }
+
+    void BuggyFunction()
+    {
+        // Start Z is Moving, keep eye on X
+        if (startPos.z != transform.localPosition.z && buggyX == false)
+        {
+            buggyZ = true;
+
+            if (startPos.x != transform.localPosition.x && buggyX == false && buggyZ == true)
+            {
+                isBugging = true;
+            }
+        }
+
+        if (startPos.x != transform.localPosition.x && buggyZ == false)
+        {
+            buggyX = true;
+
+            if (startPos.z != transform.localPosition.z && buggyZ == false && buggyX == true)
+            {
+                isBugging = true;
+            }
+        }
+
+        if (isBugging == true)
+        {
+            rend.material = enemyMats[1];
+
+
+        }
     }
 
     void OnCollisionEnter(Collision other)
