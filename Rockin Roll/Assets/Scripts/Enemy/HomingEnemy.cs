@@ -17,17 +17,19 @@ public class HomingEnemy : MonoBehaviour
     public int deathChoice;
 
     public float chaseRadius;
-    public Transform target;
+    Transform target;
     public bool isChasing = false;
 
     void Awake()
     {
         enemyStats = GameObject.Find("GameManager").GetComponent<EnemyStats>();
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Use this for initialization
     void Start()
     {
+        //target = GameObject.FindGameObjectWithTag("Player").transform;
         moveSpeed = enemyStats.enemyMoveSpeed;
         rotationAngle = enemyStats.enemyRotation;
 
@@ -41,10 +43,6 @@ public class HomingEnemy : MonoBehaviour
     {
         transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
 
-        if (target == null)
-        {
-            return;
-        }
         float distance = Vector3.Distance(transform.position, target.position);
         if (distance <= chaseRadius && !isChasing)
         {
@@ -52,6 +50,11 @@ public class HomingEnemy : MonoBehaviour
             transform.LookAt(target);
             Debug.Log("Got you");
         }
+    }
+
+    private void LateUpdate()
+    {
+        
     }
 
     void OnCollisionEnter(Collision other)
