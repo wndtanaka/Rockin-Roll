@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HomingEnemy : MonoBehaviour
+public class BombEnemy : MonoBehaviour
 {
     public int moveSpeed;
 
@@ -16,7 +16,11 @@ public class HomingEnemy : MonoBehaviour
 
     public int deathChoice;
 
+    public float triggerRadius = 15;
+    float distance;
+
     Transform target;
+    Animator anim;
 
     void Awake()
     {
@@ -27,6 +31,7 @@ public class HomingEnemy : MonoBehaviour
     {
         moveSpeed = enemyStats.enemyMoveSpeed;
         rotationAngle = enemyStats.enemyRotation;
+        anim = GetComponent<Animator>();
 
         transform.Rotate(new Vector3(0, rotationAngle, 0));
 
@@ -42,25 +47,31 @@ public class HomingEnemy : MonoBehaviour
     void Update()
     {
         transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
-
         if (target == null)
         {
             return;
         }
-        transform.LookAt(target);
+        distance = Vector3.Distance(transform.position, target.position);
+        if (distance <= triggerRadius)
+        {
+            StartCoroutine(TriggerExplosions());
+        }
     }
 
-    private void LateUpdate()
+    IEnumerator TriggerExplosions()
     {
-
+        anim.SetTrigger("Explode");
+        yield return new WaitForSeconds(3);
+        Instantiate(explosionPrefab, transform.position, transform.rotation);
+        if (distance <= triggerRadius)
+        {
+            Destroy(target.gameObject);
+            UIManager.isDead = true;
+        }
     }
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player"))
-        {
-
-        }
 
         if (other.gameObject.CompareTag("Enemy"))
         {
@@ -93,5 +104,11 @@ public class HomingEnemy : MonoBehaviour
         {
             deathChoice = 1;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, triggerRadius);
     }
 }
