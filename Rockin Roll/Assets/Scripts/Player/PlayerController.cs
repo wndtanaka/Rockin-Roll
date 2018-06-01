@@ -60,6 +60,10 @@ public class PlayerController : MonoBehaviour
                 Destroy(other.gameObject);
                 StartCoroutine(ReverseDirection());
                 break;
+            case "Blue Enemy":
+                UIManager.isDead = true;
+                Destroy(gameObject);
+                break;
         }
     }
 
