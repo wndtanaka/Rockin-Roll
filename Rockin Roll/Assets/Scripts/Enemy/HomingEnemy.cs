@@ -36,6 +36,7 @@ public class HomingEnemy : MonoBehaviour
         transform.Rotate(new Vector3(0, rotationAngle, 0));
 
         deathChoice = 0;
+
     }
 
     // Update is called once per frame
@@ -43,18 +44,22 @@ public class HomingEnemy : MonoBehaviour
     {
         transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
 
-        float distance = Vector3.Distance(transform.position, target.position);
-        if (distance <= chaseRadius && !isChasing)
+        if (target == null)
         {
-            isChasing = !isChasing;
-            transform.LookAt(target);
-            Debug.Log("Got you");
+            return;
         }
+        transform.LookAt(target);
+        // float distance = Vector3.Distance(transform.position, target.position);
+        //if (distance <= chaseRadius && !isChasing)
+        //{
+        //   isChasing = !isChasing;
+        //   Debug.Log("Got you");
+        //}
     }
 
     private void LateUpdate()
     {
-        
+
     }
 
     void OnCollisionEnter(Collision other)
