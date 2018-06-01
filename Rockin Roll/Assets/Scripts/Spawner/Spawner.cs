@@ -40,7 +40,7 @@ public class Spawner : MonoBehaviour
                 return;
             }
 
-            Instantiate(enemies[0], transform.position, transform.rotation);
+            Instantiate(enemies[Random.Range(0,2)], transform.position, transform.rotation);
 
             hasSpawned = true;
         }

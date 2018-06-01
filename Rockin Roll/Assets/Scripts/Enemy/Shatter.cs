@@ -32,7 +32,7 @@ public class Shatter : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Blue Enemy"))
         {
             Destroy(gameObject);
         }

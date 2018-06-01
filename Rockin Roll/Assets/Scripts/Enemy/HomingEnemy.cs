@@ -63,26 +63,14 @@ public class HomingEnemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-            if (deathChoice == 0 && other.gameObject.GetComponent<HomingEnemy>().deathChoice == 0)
-            {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
-            }
+            Destroy(gameObject);
+        }
 
-            if (deathChoice == 1 && other.gameObject.GetComponent<HomingEnemy>().deathChoice == 0)
-            {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
-            }
-
-            if (deathChoice == 0 && other.gameObject.GetComponent<HomingEnemy>().deathChoice == 1)
-            {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
-            }
-
-            if (deathChoice == 1 && other.gameObject.GetComponent<HomingEnemy>().deathChoice == 1)
-            {
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            }
+        if (other.gameObject.CompareTag("Blue Enemy"))
+        {
+            Instantiate(shatterPrefab, transform.position, transform.rotation);
 
             Destroy(gameObject);
         }

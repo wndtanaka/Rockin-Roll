@@ -121,6 +121,13 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if (other.gameObject.CompareTag("Blue Enemy"))
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+            Destroy(gameObject);
+        }
+
         if (other.gameObject.CompareTag("Wall"))
         {
             Destroy(gameObject);
