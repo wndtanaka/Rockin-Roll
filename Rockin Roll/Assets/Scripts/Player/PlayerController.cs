@@ -61,7 +61,6 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case "Shatter":
-                Instantiate(playerDeath, transform.position, Quaternion.identity);
                 Destroy(other.gameObject);
                 StartCoroutine(ReverseDirection());
                 break;
