@@ -94,6 +94,8 @@ public class Bomb2 : MonoBehaviour
 
         moveStopBool = true;
 
+        detectObject.SetActive(true);
+
         stopTransform = transform.position;
     }
 
@@ -131,7 +133,7 @@ public class Bomb2 : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {

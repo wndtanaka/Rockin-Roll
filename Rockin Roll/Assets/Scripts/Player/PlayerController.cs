@@ -74,6 +74,11 @@ public class PlayerController : MonoBehaviour
                 UIManager.isDead = true;
                 Destroy(gameObject);
                 break;
+            case "Bomb Enemy":
+                Instantiate(playerDeath, transform.position, Quaternion.identity);
+                UIManager.isDead = true;
+                Destroy(gameObject);
+                break;
         }
     }
 
