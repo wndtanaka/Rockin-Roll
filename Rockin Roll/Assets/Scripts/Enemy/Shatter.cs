@@ -54,7 +54,7 @@ public class Shatter : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (other.gameObject.CompareTag("Explosion"))
+        if (other.gameObject.CompareTag("Explosion") || other.gameObject.CompareTag("Big Explosion"))
         {
             Destroy(gameObject);
         }

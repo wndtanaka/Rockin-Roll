@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
         //BuggyFunction();
     }
 
+    #region Buggy
     void BuggyFunction()
     {
         // Start Z is Moving, keep eye on X
@@ -83,68 +84,65 @@ public class Enemy : MonoBehaviour
 
         }
     }
+    #endregion
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        switch (other.gameObject.tag)
         {
-            //Debug.Log("Enemy.cs: Enemy hit Player!");
-        }
+            case "Player":
+                // Do Nothing
+                break;
 
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            //gameObject.GetComponent<BoxCollider>().enabled = false;
+            case "Enemy":
+                if (deathChoice == 0 && other.gameObject.GetComponent<Enemy>().deathChoice == 0)
+                {
+                    Instantiate(shatterPrefab, transform.position, transform.rotation);
+                }
 
-            //enemyHitLocation = new Vector3(other.contacts[0].point.x, 1, other.contacts[0].point.z);
-            //Vector3 midpoint = (enemyHitLocation + transform.position) / 2;
+                if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 0)
+                {
+                    Instantiate(shatterPrefab, transform.position, transform.rotation);
+                }
 
-            if (deathChoice == 0 && other.gameObject.GetComponent<Enemy>().deathChoice == 0)
-            {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
-            }
+                if (deathChoice == 0 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
+                {
+                    Instantiate(shatterPrefab, transform.position, transform.rotation);
+                }
 
-            if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 0)
-            {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
-            }
+                if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
+                {
+                    Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                }
 
-            if (deathChoice == 0 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
-            {
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
-            }
+                Destroy(gameObject);
+                break;
 
-            if (deathChoice == 1 && other.gameObject.GetComponent<Enemy>().deathChoice == 1)
-            {
+            case "Blue Enemy":
                 Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            }
 
-            Destroy(gameObject);
-        }
+                Destroy(gameObject);
+                break;
 
-        if (other.gameObject.CompareTag("Blue Enemy"))
-        {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            case "Bomb Enemy":
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-            Destroy(gameObject);
-        }
+                Destroy(gameObject);
+                break;
 
-        if (other.gameObject.CompareTag("Bomb Enemy"))
-        {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            case "Wall":
+                Destroy(gameObject);
+                break;
 
-            Destroy(gameObject);
-        }
+            case "Explosion":
+                Destroy(gameObject);
+                break;
 
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            Destroy(gameObject);
-        }
+            case "Big Explosion":
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        if (other.gameObject.CompareTag("Explosion"))
-        {
-            //Instantiate(explosionPrefab, transform.position, transform.rotation);
-
-            Destroy(gameObject);
+                Destroy(gameObject);
+                break;
         }
     }
 
@@ -154,10 +152,5 @@ public class Enemy : MonoBehaviour
         {
             deathChoice = 1;
         }
-
-        //if (other.gameObject.CompareTag("WallCollider"))
-        //{
-        //    Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
-        //}
     }
 }

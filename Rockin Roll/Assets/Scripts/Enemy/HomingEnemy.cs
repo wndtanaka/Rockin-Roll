@@ -14,8 +14,6 @@ public class HomingEnemy : MonoBehaviour
 
     public GameObject explosionPrefab, shatterPrefab;
 
-    public int deathChoice;
-
     Transform target;
 
     void Awake()
@@ -29,8 +27,6 @@ public class HomingEnemy : MonoBehaviour
         rotationAngle = enemyStats.enemyRotation;
 
         transform.Rotate(new Vector3(0, rotationAngle, 0));
-
-        deathChoice = 0;
 
         if (target == null && UIManager.isDead)
         {
@@ -57,40 +53,43 @@ public class HomingEnemy : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        switch (other.gameObject.tag)
         {
+            case "Player":
+                // Do Nothing
+                break;
 
-        }
+            case "Enemy":
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                break;
 
-            Destroy(gameObject);
-        }
+            case "Blue Enemy":
+                Instantiate(shatterPrefab, transform.position, Quaternion.identity);
 
-        if (other.gameObject.CompareTag("Blue Enemy"))
-        {
-            Instantiate(shatterPrefab, transform.position, transform.rotation);
+                Destroy(gameObject);
+                break;
 
-            Destroy(gameObject);
-        }
+            case "Bomb Enemy":
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-        if (other.gameObject.CompareTag("Bomb Enemy"))
-        {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(gameObject);
+                break;
 
-            Destroy(gameObject);
-        }
+            case "Wall":
+                Destroy(gameObject);
+                break;
 
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            Destroy(gameObject);
-        }
+            case "Explosion":
+                Destroy(gameObject);
+                break;
 
-        if (other.gameObject.CompareTag("Explosion"))
-        {
-            Destroy(gameObject);
+            case "Big Explosion":
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+
+                Destroy(gameObject);
+                break;
         }
     }
 
@@ -98,7 +97,7 @@ public class HomingEnemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("EnemyHeadOn"))
         {
-            deathChoice = 1;
+            
         }
     }
 }
