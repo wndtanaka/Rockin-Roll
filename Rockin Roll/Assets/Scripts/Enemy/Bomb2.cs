@@ -92,7 +92,7 @@ public class Bomb2 : MonoBehaviour
     {
 
 
-        yield return new WaitForSeconds(Random.Range(3f,5f));
+        yield return new WaitForSeconds(Random.Range(3.5f,4.5f));
 
         moveStopBool = true;
 
