@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     }
     public void HallOfFameButton()
     {
-        SceneManager.LoadScene("HallOfFameScene");
+        SceneManager.LoadScene("Mobile");
     }
     public void QuitButton()
     {
