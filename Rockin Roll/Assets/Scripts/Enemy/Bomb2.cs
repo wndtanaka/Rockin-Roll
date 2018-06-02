@@ -137,7 +137,7 @@ public class Bomb2 : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player") && moveStopBool == true)
         {
             playerDetected = true;
             blowUp = true;
