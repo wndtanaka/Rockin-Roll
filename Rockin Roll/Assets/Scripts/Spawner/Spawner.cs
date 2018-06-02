@@ -6,6 +6,7 @@ public class Spawner : MonoBehaviour
 {
     [Header("Spawn")]
     public GameObject[] enemies;
+    public GameObject[] friends;
     public bool hasSpawned;
     public float spawnInterval;
     public int spawnAmount;
@@ -33,14 +34,31 @@ public class Spawner : MonoBehaviour
         {
             if (Difficulty.bonusSpawned == false && Difficulty.wave5On == true)
             {
-                Instantiate(enemies[1], transform.position, transform.rotation);
+                Instantiate(friends[0], transform.position, transform.rotation);
 
                 Difficulty.bonusSpawned = true;
 
                 return;
             }
 
-            Instantiate(enemies[Random.Range(0,2)], transform.position, transform.rotation);
+            int randomChoice = Random.Range(0,10);
+
+            if (randomChoice >= 0 && randomChoice <= 7)
+            {
+                Instantiate(enemies[0], transform.position, transform.rotation);
+            }
+
+            if (randomChoice == 8)
+            {
+                Instantiate(enemies[1], transform.position, transform.rotation);
+            }
+
+            if (randomChoice == 9)
+            {
+                Instantiate(enemies[2], transform.position, transform.rotation);
+            }
+
+            //Instantiate(enemies[Random.Range(0,2)], transform.position, transform.rotation);
 
             hasSpawned = true;
         }

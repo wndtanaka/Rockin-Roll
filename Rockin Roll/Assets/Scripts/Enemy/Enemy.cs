@@ -50,7 +50,7 @@ public class Enemy : MonoBehaviour
     {
         transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
 
-        BuggyFunction();
+        //BuggyFunction();
     }
 
     void BuggyFunction()
