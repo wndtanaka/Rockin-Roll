@@ -18,7 +18,7 @@ public class Bomb2 : MonoBehaviour
 
     public Material[] enemyMats;
 
-    public bool blowUp, blowUpStarted, playerDetected;
+    public bool blowUp, blowUpStarted, playerDetected, moveStopBool;
 
     public Renderer rend;
 
@@ -40,11 +40,14 @@ public class Bomb2 : MonoBehaviour
         blowUpStarted = false;
 
         playerDetected = false;
+        moveStopBool = false;
+
+        StartCoroutine(MoveStop());
     }
 
     void Update()
     {
-        if (playerDetected == false)
+        if (playerDetected == false && moveStopBool == false)
         {
             transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
         }
@@ -68,6 +71,15 @@ public class Bomb2 : MonoBehaviour
         Instantiate(explosionPrefab, transform.position, transform.rotation);
 
         Destroy(gameObject);
+    }
+
+    IEnumerator MoveStop()
+    {
+
+
+        yield return new WaitForSeconds(Random.Range(1f,2f));
+
+        moveStopBool = true;
     }
 
     void OnCollisionEnter(Collision other)

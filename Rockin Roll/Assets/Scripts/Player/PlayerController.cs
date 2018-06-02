@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     public float speed = 20;
 
+    public GameObject playerDeath;
+
     int index = 0;
     public static bool changeDirection = false;
     public static bool reverseDirection = false;
@@ -49,22 +51,27 @@ public class PlayerController : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Enemy":
+                Instantiate(playerDeath, transform.position, Quaternion.identity);
                 UIManager.isDead = true;
                 Destroy(gameObject);
                 break;
             case "Explosion":
+                Instantiate(playerDeath, transform.position, Quaternion.identity);
                 UIManager.isDead = true;
                 Destroy(gameObject);
                 break;
             case "Shatter":
+                Instantiate(playerDeath, transform.position, Quaternion.identity);
                 Destroy(other.gameObject);
                 StartCoroutine(ReverseDirection());
                 break;
             case "Blue Enemy":
+                Instantiate(playerDeath, transform.position, Quaternion.identity);
                 UIManager.isDead = true;
                 Destroy(gameObject);
                 break;
             case "Big Explosion":
+                Instantiate(playerDeath, transform.position, Quaternion.identity);
                 UIManager.isDead = true;
                 Destroy(gameObject);
                 break;
