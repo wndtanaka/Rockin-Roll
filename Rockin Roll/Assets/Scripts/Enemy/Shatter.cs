@@ -16,7 +16,7 @@ public class Shatter : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        moveSpeed = enemyStats.enemyMoveSpeed;
+        moveSpeed = enemyStats.enemyMoveSpeed * 2;
 
         if (CameraShake.exShake == false && CameraShake.shatterShake == false)
         {
