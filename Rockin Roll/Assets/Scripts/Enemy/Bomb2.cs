@@ -34,7 +34,9 @@ public class Bomb2 : MonoBehaviour
 
     void Start()
     {
-        moveSpeed = enemyStats.enemyMoveSpeed;
+        //moveSpeed = enemyStats.enemyMoveSpeed;
+        moveSpeed = 4;
+
         rotationAngle = enemyStats.enemyRotation;
         anim = GetComponent<Animator>();
 
