@@ -13,6 +13,7 @@ public class Difficulty : MonoBehaviour
 
     [Header("Bonus Check")]
     public static bool bonusSpawned;
+    public static bool timeGuySpawned;
 
     [Header("Wave 2")]
     public float wave2Time;
@@ -88,50 +89,51 @@ public class Difficulty : MonoBehaviour
         diffTimer = 0f;
 
         wave2On = false;
-        wave2Time = 10f;
+        wave2Time = 20f;
         wave2Spawner = 6;
 
         wave3On = false;
-        wave3Time = 20f;
+        wave3Time = 40f;
         wave3EnemySpeed = 5;
 
         wave4On = false;
-        wave4Time = 30f;
+        wave4Time = 60f;
         wave4SpawnInterval = 3;
 
         wave5On = false;
-        wave5Time = 40f;
+        wave5Time = 80f;
         wave5Spawner = 8;
 
         wave6On = false;
-        wave6Time = 50f;
+        wave6Time = 100f;
         wave6EnemySpeed = 6;
 
         wave7On = false;
-        wave7Time = 60f;
+        wave7Time = 120f;
         wave7SpawnInterval = 2;
 
         wave8On = false;
-        wave8Time = 66f;
+        wave8Time = 140f;
         wave8Spawner = 10;
 
         wave9On = false;
-        wave9Time = 72f;
+        wave9Time = 160f;
         wave9EnemySpeed = 7;
 
         wave10On = false;
-        wave10Time = 78f;
+        wave10Time = 180f;
         wave10SpawnInterval = 1;
 
         wave11On = false;
-        wave11Time = 84f;
+        wave11Time = 200f;
         wave11Spawner = 12;
 
         wave12On = false;
-        wave12Time = 90f;
+        wave12Time = 220f;
         wave12EnemySpeed = 8;
 
         bonusSpawned = false;
+        timeGuySpawned = false;
     }
 
     void TimerCount()

@@ -43,106 +43,31 @@ public class Time2 : MonoBehaviour
 
         transform.Rotate(new Vector3(0, rotationAngle, 0));
 
-        blowUp = false;
-        blowUpStarted = false;
+        //Destroy(gameObject, 60);
 
-        playerDetected = false;
-        moveStopBool = false;
-
-        bonusPoints = 10f;
-
-        Destroy(gameObject, 60);
-
-        //StartCoroutine(MoveStop());
+        StartCoroutine(TimeGuyDie());
     }
 
     void Update()
     {
-        if (playerDetected == false && moveStopBool == false)
-        {
-            transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
-        }
-
-        /*if (blowUp == true && blowUpStarted == false)
-        {
-            StartCoroutine(TriggerExplosions());
-        }
-
-        if (playerDetected == true || moveStopBool == true)
-        {
-            transform.position = stopTransform;
-        }*/
+        transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
     }
 
-    IEnumerator TriggerExplosions()
+    IEnumerator TimeGuyDie()
     {
-        blowUpStarted = true;
 
-        detectObject.SetActive(false);
 
-        anim.SetTrigger("Explode");
+        yield return new WaitForSeconds(60);
 
-        yield return new WaitForSeconds(3f);
-
-        Instantiate(explosionPrefab, transform.position, transform.rotation);
-
-        //Score.playerScore = Score.playerScore + bonusPoints;
+        Difficulty.timeGuySpawned = false;
 
         Destroy(gameObject);
     }
 
-    IEnumerator MoveStop()
-    {
-
-
-        yield return new WaitForSeconds(Random.Range(1f, 2f));
-
-        moveStopBool = true;
-
-        stopTransform = transform.position;
-    }
-
     void OnCollisionEnter(Collision other)
     {
-        /*switch (other.gameObject.tag)
-        {
-            case "Enemy":
-                Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
-                break;
 
-            case "Blue Enemy":
-                Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
-                break;
-
-            case "Bomb Enemy":
-                Instantiate(shatterPrefab, transform.position, transform.rotation);
-
-                Destroy(gameObject);
-                break;
-
-            case "Wall":
-                Destroy(gameObject);
-                break;
-
-            case "Explosion":
-                Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<SphereCollider>());
-                break;
-
-            case "Big Explosion":
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-
-                Destroy(gameObject);
-                break;
-        }*/
     }
-
-    /*void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            
-        }
-    }*/
 
     void OnTriggerStay(Collider other)
     {

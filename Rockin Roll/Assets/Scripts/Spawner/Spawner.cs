@@ -43,23 +43,23 @@ public class Spawner : MonoBehaviour
                 return;
             }
 
-            int randomChoice = Random.Range(0,40);
+            int randomChoice = Random.Range(0,50);
 
-            if (randomChoice >= 0 && randomChoice <= 46)
+            if (randomChoice >= 0 && randomChoice <= 38)
             {
                 Instantiate(enemies[0], transform.position, transform.rotation);
 
                 hasSpawned = true;
             }
 
-            if (randomChoice == 47)
+            if (randomChoice >= 39 && randomChoice <= 43)
             {
                 Instantiate(enemies[1], transform.position, transform.rotation);
 
                 hasSpawned = true;
             }
 
-            if (randomChoice == 48)
+            if (randomChoice >= 44 && randomChoice <= 48)
             {
                 Instantiate(enemies[2], transform.position, transform.rotation);
 
