@@ -150,6 +150,21 @@ public class Time2 : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerController>().speed = moveSpeed * 2;
         }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<Enemy>().moveSpeed = moveSpeed;
+        }
+
+        if (other.gameObject.CompareTag("Blue Enemy"))
+        {
+            other.gameObject.GetComponent<HomingEnemy>().moveSpeed = moveSpeed;
+        }
+
+        if (other.gameObject.CompareTag("Shatter"))
+        {
+            other.gameObject.GetComponent<Shatter>().moveSpeed = moveSpeed;
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -157,6 +172,21 @@ public class Time2 : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerController>().speed = 20f;
+        }
+
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<Enemy>().moveSpeed = enemyStats.enemyMoveSpeed;
+        }
+
+        if (other.gameObject.CompareTag("Blue Enemy"))
+        {
+            other.gameObject.GetComponent<HomingEnemy>().moveSpeed = enemyStats.enemyMoveSpeed;
+        }
+
+        if (other.gameObject.CompareTag("Shatter"))
+        {
+            other.gameObject.GetComponent<Shatter>().moveSpeed = enemyStats.enemyMoveSpeed;
         }
     }
 
