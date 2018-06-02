@@ -75,14 +75,21 @@ public class BombEnemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            /*Instantiate(explosionPrefab, transform.position, Quaternion.identity);
 
-            Destroy(gameObject);
+            Destroy(gameObject);*/
         }
 
         if (other.gameObject.CompareTag("Blue Enemy"))
         {
-            Instantiate(shatterPrefab, transform.position, transform.rotation);
+            /*Instantiate(shatterPrefab, transform.position, transform.rotation);
+
+            Destroy(gameObject);*/
+        }
+
+        if (other.gameObject.CompareTag("Bomb Enemy"))
+        {
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
 
             Destroy(gameObject);
         }
