@@ -22,6 +22,8 @@ public class Bomb2 : MonoBehaviour
 
     public Renderer rend;
 
+    public float bonusPoints;
+
     void Awake()
     {
         enemyStats = GameObject.Find("GameManager").GetComponent<EnemyStats>();
@@ -41,6 +43,8 @@ public class Bomb2 : MonoBehaviour
 
         playerDetected = false;
         moveStopBool = false;
+
+        bonusPoints = 10f;
 
         StartCoroutine(MoveStop());
     }
@@ -70,6 +74,8 @@ public class Bomb2 : MonoBehaviour
 
         Instantiate(explosionPrefab, transform.position, transform.rotation);
 
+        Score.playerScore = Score.playerScore + bonusPoints;
+
         Destroy(gameObject);
     }
 
@@ -87,11 +93,11 @@ public class Bomb2 : MonoBehaviour
         switch (other.gameObject.tag)
         {
             case "Enemy":
-                // Do Nothing
+                Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
                 break;
 
             case "Blue Enemy":
-                // Do Nothing
+                Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
                 break;
 
             case "Bomb Enemy":

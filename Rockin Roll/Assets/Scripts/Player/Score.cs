@@ -50,6 +50,12 @@ public class Score : MonoBehaviour
         //HighScoreCheck();
         scoreboard.text = "Score: " + showScore.ToString();
         highScoreBoard.text = "High Score: " + highScore.ToString();
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            PlayerPrefs.SetFloat("HighScore", 0);
+            PlayerPrefs.GetFloat("HighScore");
+        }
     }
 
     void Scoring()
