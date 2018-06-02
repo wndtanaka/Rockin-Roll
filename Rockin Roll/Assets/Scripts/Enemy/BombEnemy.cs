@@ -94,7 +94,7 @@ public class BombEnemy : MonoBehaviour
 
         if (other.gameObject.CompareTag("Explosion"))
         {
-            Destroy(gameObject);
+            Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<SphereCollider>());
         }
     }
 

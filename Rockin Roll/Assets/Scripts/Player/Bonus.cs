@@ -15,7 +15,7 @@ public class Bonus : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Debug.Log("Bonus here!");
+        //Debug.Log("Bonus here!");
 
         moveSpeed = 4;
 
@@ -69,6 +69,13 @@ public class Bonus : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy") && startEnemyDestroy == true)
+        {
+            Destroy(other.gameObject);
+
+            startEnemyDestroy = false;
+        }
+
+        if (other.gameObject.CompareTag("Blue Enemy") && startEnemyDestroy == true)
         {
             Destroy(other.gameObject);
 
