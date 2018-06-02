@@ -16,7 +16,7 @@ public class Arrow : MonoBehaviour
         // getting PlayerController in parent
         playerController = GetComponentInParent<PlayerController>();
         // subscribe to this delegate
-        playerController.onReverseDirection += OnReverseDirection;
+        playerController.onArrowChanged += OnReverseDirection;
         currentAngle = 0;
 
         transform.rotation = Quaternion.Euler(0, angle[currentAngle], 0);

@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     // creating delegate function to handle reverse array
     public event OnReverseDirection onReverseDirection;
+    public event OnArrowChanged onArrowChanged;
 
     private void Start()
     {
@@ -61,6 +62,7 @@ public class PlayerController : MonoBehaviour
                 Destroy(gameObject);
                 break;
             case "Shatter":
+                onArrowChanged.Invoke();
                 Destroy(other.gameObject);
                 StartCoroutine(ReverseDirection());
                 break;
@@ -86,7 +88,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitUntil(() => inputController.ChangeDirection);
         // call the subscribed function
-        onReverseDirection.Invoke();
+        //onReverseDirection.Invoke();
         // reverse array
         System.Array.Reverse(transformDirection);
     }
