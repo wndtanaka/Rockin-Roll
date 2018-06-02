@@ -43,25 +43,32 @@ public class Spawner : MonoBehaviour
                 return;
             }
 
-            int randomChoice = Random.Range(0,10);
+            int randomChoice = Random.Range(0,20);
 
-            if (randomChoice >= 0 && randomChoice <= 7)
+            if (randomChoice >= 0 && randomChoice <= 14)
             {
                 Instantiate(enemies[0], transform.position, transform.rotation);
 
                 hasSpawned = true;
             }
 
-            if (randomChoice == 8)
+            if (randomChoice >= 15 && randomChoice <= 16)
             {
                 Instantiate(enemies[1], transform.position, transform.rotation);
 
                 hasSpawned = true;
             }
 
-            if (randomChoice == 9)
+            if (randomChoice >= 17 && randomChoice <= 18)
             {
                 Instantiate(enemies[2], transform.position, transform.rotation);
+
+                hasSpawned = true;
+            }
+
+            if (randomChoice == 19)
+            {
+                Instantiate(enemies[3], transform.position, transform.rotation);
 
                 hasSpawned = true;
             }

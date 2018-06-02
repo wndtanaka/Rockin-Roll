@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bomb2 : MonoBehaviour
+public class Time2 : MonoBehaviour
 {
     public int moveSpeed;
 
@@ -29,14 +29,17 @@ public class Bomb2 : MonoBehaviour
     void Awake()
     {
         enemyStats = GameObject.Find("GameManager").GetComponent<EnemyStats>();
-        rend = gameObject.GetComponent<MeshRenderer>();
+        //rend = gameObject.GetComponent<MeshRenderer>();
     }
 
     void Start()
     {
-        moveSpeed = enemyStats.enemyMoveSpeed;
+        //moveSpeed = enemyStats.enemyMoveSpeed;
+
+        moveSpeed = 2;
+
         rotationAngle = enemyStats.enemyRotation;
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
 
         transform.Rotate(new Vector3(0, rotationAngle, 0));
 
@@ -48,7 +51,9 @@ public class Bomb2 : MonoBehaviour
 
         bonusPoints = 10f;
 
-        StartCoroutine(MoveStop());
+        Destroy(gameObject, 60);
+
+        //StartCoroutine(MoveStop());
     }
 
     void Update()
@@ -58,7 +63,7 @@ public class Bomb2 : MonoBehaviour
             transform.Translate(Vector3.forward * (Time.deltaTime * moveSpeed));
         }
 
-        if (blowUp == true && blowUpStarted == false)
+        /*if (blowUp == true && blowUpStarted == false)
         {
             StartCoroutine(TriggerExplosions());
         }
@@ -66,7 +71,7 @@ public class Bomb2 : MonoBehaviour
         if (playerDetected == true || moveStopBool == true)
         {
             transform.position = stopTransform;
-        }
+        }*/
     }
 
     IEnumerator TriggerExplosions()
@@ -90,7 +95,7 @@ public class Bomb2 : MonoBehaviour
     {
 
 
-        yield return new WaitForSeconds(Random.Range(3f,5f));
+        yield return new WaitForSeconds(Random.Range(1f, 2f));
 
         moveStopBool = true;
 
@@ -99,7 +104,7 @@ public class Bomb2 : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        switch (other.gameObject.tag)
+        /*switch (other.gameObject.tag)
         {
             case "Enemy":
                 Physics.IgnoreCollision(gameObject.GetComponent<BoxCollider>(), other.gameObject.GetComponent<BoxCollider>());
@@ -128,17 +133,30 @@ public class Bomb2 : MonoBehaviour
 
                 Destroy(gameObject);
                 break;
-        }
+        }*/
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            
+        }
+    }*/
+
+    void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerDetected = true;
-            blowUp = true;
+            other.gameObject.GetComponent<PlayerController>().speed = enemyStats.enemyMoveSpeed / 2;
+        }
+    }
 
-            stopTransform = transform.position;
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerController>().speed = 20f;
         }
     }
 

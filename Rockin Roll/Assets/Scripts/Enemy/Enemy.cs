@@ -59,6 +59,7 @@ public class Enemy : MonoBehaviour
         // Start Z is Moving, keep eye on X
         if (startPos.z != transform.localPosition.z && buggyX == false)
         {
+            // Z-axis is Good
             buggyZ = true;
 
             if (startPos.x != transform.localPosition.x && buggyX == false && buggyZ == true)
@@ -77,11 +78,10 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (isBugging == true)
+        if (buggyZ == true && isBugging == true)
         {
-            rend.material = enemyMats[1];
-
-
+            Vector3 curPos = transform.position;
+            curPos.x = startPos.x;
         }
     }
     #endregion
