@@ -64,6 +64,10 @@ public class PlayerController : MonoBehaviour
                 UIManager.isDead = true;
                 Destroy(gameObject);
                 break;
+            case "Big Explosion":
+                UIManager.isDead = true;
+                Destroy(gameObject);
+                break;
         }
     }
 
