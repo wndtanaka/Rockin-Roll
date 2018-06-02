@@ -68,7 +68,31 @@ public class Bonus : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy") && startEnemyDestroy == true)
+        if (startEnemyDestroy == true)
+        {
+            switch (other.gameObject.tag)
+            {
+                case "Enemy":
+                    Destroy(other.gameObject);
+
+                    startEnemyDestroy = false;
+                    break;
+
+                case "Blue Enemy":
+                    Destroy(other.gameObject);
+
+                    startEnemyDestroy = false;
+                    break;
+
+                case "Bomb Enemy":
+                    Destroy(other.gameObject);
+
+                    startEnemyDestroy = false;
+                    break;
+            }
+        }
+
+        /*if (other.gameObject.CompareTag("Enemy") && startEnemyDestroy == true)
         {
             Destroy(other.gameObject);
 
@@ -80,6 +104,6 @@ public class Bonus : MonoBehaviour
             Destroy(other.gameObject);
 
             startEnemyDestroy = false;
-        }
+        }*/
     }
 }

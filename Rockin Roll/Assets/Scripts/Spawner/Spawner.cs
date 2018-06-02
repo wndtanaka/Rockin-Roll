@@ -32,7 +32,7 @@ public class Spawner : MonoBehaviour
     {
         for (int i = 0; i < spawnAmount; i++)
         {
-            if (Difficulty.bonusSpawned == false && Difficulty.wave5On == true)
+            if (Difficulty.bonusSpawned == false /*&& Difficulty.wave5On == true*/)
             {
                 Instantiate(friends[0], transform.position, transform.rotation);
 

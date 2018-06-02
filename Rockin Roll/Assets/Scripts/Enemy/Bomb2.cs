@@ -74,7 +74,7 @@ public class Bomb2 : MonoBehaviour
 
         Instantiate(explosionPrefab, transform.position, transform.rotation);
 
-        Score.playerScore = Score.playerScore + bonusPoints;
+        //Score.playerScore = Score.playerScore + bonusPoints;
 
         Destroy(gameObject);
     }
