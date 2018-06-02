@@ -38,6 +38,8 @@ public class Spawner : MonoBehaviour
 
                 Difficulty.bonusSpawned = true;
 
+                hasSpawned = true;
+
                 return;
             }
 
@@ -46,21 +48,27 @@ public class Spawner : MonoBehaviour
             if (randomChoice >= 0 && randomChoice <= 7)
             {
                 Instantiate(enemies[0], transform.position, transform.rotation);
+
+                hasSpawned = true;
             }
 
             if (randomChoice == 8)
             {
                 Instantiate(enemies[1], transform.position, transform.rotation);
+
+                hasSpawned = true;
             }
 
             if (randomChoice == 9)
             {
                 Instantiate(enemies[2], transform.position, transform.rotation);
+
+                hasSpawned = true;
             }
 
             //Instantiate(enemies[Random.Range(0,2)], transform.position, transform.rotation);
 
-            hasSpawned = true;
+            //hasSpawned = true;
         }
     }
 }

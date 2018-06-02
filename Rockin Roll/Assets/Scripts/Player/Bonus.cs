@@ -68,7 +68,7 @@ public class Bonus : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (startEnemyDestroy == true)
+        /*if (startEnemyDestroy == true)
         {
             switch (other.gameObject.tag)
             {
@@ -90,7 +90,7 @@ public class Bonus : MonoBehaviour
                     startEnemyDestroy = false;
                     break;
             }
-        }
+        }*/
 
         /*if (other.gameObject.CompareTag("Enemy") && startEnemyDestroy == true)
         {
