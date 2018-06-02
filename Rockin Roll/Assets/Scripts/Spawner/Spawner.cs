@@ -45,21 +45,21 @@ public class Spawner : MonoBehaviour
 
             int randomChoice = Random.Range(0,20);
 
-            if (randomChoice >= 0 && randomChoice <= 14)
+            if (randomChoice >= 0 && randomChoice <= 16)
             {
                 Instantiate(enemies[0], transform.position, transform.rotation);
 
                 hasSpawned = true;
             }
 
-            if (randomChoice >= 15 && randomChoice <= 16)
+            if (randomChoice == 17)
             {
                 Instantiate(enemies[1], transform.position, transform.rotation);
 
                 hasSpawned = true;
             }
 
-            if (randomChoice >= 17 && randomChoice <= 18)
+            if (randomChoice == 18)
             {
                 Instantiate(enemies[2], transform.position, transform.rotation);
 
