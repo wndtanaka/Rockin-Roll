@@ -73,7 +73,7 @@ public class Player2 : MonoBehaviour
             }
         }
 
-        Debug.Log(currentAngle);
+        //Debug.Log(currentAngle);
     }
 
     void CheckArrow()

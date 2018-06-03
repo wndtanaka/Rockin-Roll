@@ -6,7 +6,7 @@ public class HighScoreTester : MonoBehaviour
 {
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.P))
         {
             int score = Random.Range(0, 1000);
             string username = "";

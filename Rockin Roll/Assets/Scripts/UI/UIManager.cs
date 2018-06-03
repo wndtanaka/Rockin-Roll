@@ -13,15 +13,18 @@ public class UIManager : MonoBehaviour
     // both from Game Over gameobject
     public Text yourScore;
     public Text highScore;
+    public InputField username;
 
     public static bool isGameStart = false;
     public static bool isDead = false;
     public static bool isPaused = false;
     public static bool isAlive = false;
 
+    string[] alphabets = new string[] {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
+"q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     float waitCounter = 3;
-
     Score score;
+    //SubmitHighScore submitHighScore;
 
     public static event OnUpdateHighScore onUpdateHighScore;
 
@@ -96,7 +99,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void ResumeButton()
-    { 
+    {
         StartCoroutine(ResumeGame());
     }
 
@@ -117,5 +120,10 @@ public class UIManager : MonoBehaviour
         counterText.gameObject.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void SubmitScoreButton()
+    {
+        SubmitHighScore.AddNewHighScore(username.text, (int)Score.playerScore);
     }
 }

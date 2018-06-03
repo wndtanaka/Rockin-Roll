@@ -10,12 +10,20 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
-    public void HallOfFameButton()
+    public void MobileSceneButton()
     {
         SceneManager.LoadScene("Mobile");
+    }
+    public void HallOfFameButton()
+    {
+        SceneManager.LoadScene("HallOfFame");
     }
     public void QuitButton()
     {
         Application.Quit();
+    }
+    public void BackToMainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }
