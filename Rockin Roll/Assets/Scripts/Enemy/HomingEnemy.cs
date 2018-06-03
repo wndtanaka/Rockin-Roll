@@ -32,7 +32,7 @@ public class HomingEnemy : MonoBehaviour
         {
             return;
         }
-        target = GameObject.FindGameObjectWithTag("Player").transform;
+        target = GameObject.Find("Player2").transform;
     }
 
     void Update()
