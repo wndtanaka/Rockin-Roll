@@ -10,7 +10,7 @@ public class Bonus : MonoBehaviour
 
     public bool startEnemyDestroy;
 
-    public float bonusPoints;
+    public int bonusPoints;
 
     // Use this for initialization
     void Start()
@@ -21,7 +21,7 @@ public class Bonus : MonoBehaviour
 
         startEnemyDestroy = true;
 
-        bonusPoints = 10f;
+        bonusPoints = 10;
     }
 
     // Update is called once per frame

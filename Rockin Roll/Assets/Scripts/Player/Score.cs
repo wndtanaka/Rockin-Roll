@@ -14,11 +14,12 @@ public class Score : MonoBehaviour
 
     // Current Score to show Player on UI
     public float showScore;
+    public int showScoreInt;
 
     public float inputMinimum;
 
     // High Score
-    public float highScore;
+    public int highScore;
 
     public Text scoreboard;
     public Text highScoreBoard;
@@ -33,7 +34,7 @@ public class Score : MonoBehaviour
         inputMinimum = 0.2f;
 
         // If "HighScore" doesn't exist, this sets Default to 0
-        highScore = PlayerPrefs.GetFloat("HighScore", 0);
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
 
         UIManager.onUpdateHighScore += HighScoreCheck;
 
@@ -47,7 +48,10 @@ public class Score : MonoBehaviour
 
         Scoring();
 
-        showScore = Mathf.Round(playerScore * 10f) / 10f;
+        showScore = Mathf.Round(playerScore * 10f) / 10f * 10f;
+        showScoreInt = (int)(showScore);
+
+        //Debug.Log(showScoreInt);
 
         //HighScoreCheck();
         scoreboard.text = "Score: " + showScore.ToString();
@@ -55,8 +59,8 @@ public class Score : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            PlayerPrefs.SetFloat("HighScore", 0);
-            PlayerPrefs.GetFloat("HighScore");
+            PlayerPrefs.SetInt("HighScore", 0);
+            PlayerPrefs.GetInt("HighScore");
         }
     }
 
@@ -82,7 +86,7 @@ public class Score : MonoBehaviour
     {
         if (highScore < showScore)
         {
-            PlayerPrefs.SetFloat("HighScore", showScore);
+            PlayerPrefs.SetInt("HighScore", showScoreInt);
 
             //Debug.Log("New High Score is " + PlayerPrefs.GetFloat("HighScore"));
         }
