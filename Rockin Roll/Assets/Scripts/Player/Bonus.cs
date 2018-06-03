@@ -21,7 +21,7 @@ public class Bonus : MonoBehaviour
 
         startEnemyDestroy = true;
 
-        bonusPoints = 100;
+        bonusPoints = 10;
     }
 
     // Update is called once per frame
