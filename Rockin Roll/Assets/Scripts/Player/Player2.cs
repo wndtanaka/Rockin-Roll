@@ -15,7 +15,7 @@ public class Player2 : MonoBehaviour
 
     private void Start()
     {
-        currentAngle = 1;
+        currentAngle = 0;
 
         reversed = false;
     }
@@ -35,11 +35,13 @@ public class Player2 : MonoBehaviour
             transform.position += transform.forward * (speed * Time.deltaTime);
         }
 
-        if (Input.GetKeyUp(KeyCode.Space))
+        if (Input.GetKeyUp(KeyCode.Space) && UIManager.isGameStart && !UIManager.isPaused)
         {
+            CheckNextAngle();
+
             transform.localRotation = Quaternion.Euler(transform.rotation.x, angles[currentAngle], transform.rotation.z);
 
-            CheckNextAngle();
+            //CheckNextAngle();
         }
     }
 
@@ -69,7 +71,9 @@ public class Player2 : MonoBehaviour
             {
                 currentAngle -= 1;
             }
-        }   
+        }
+
+        Debug.Log(currentAngle);
     }
 
     void CheckArrow()
