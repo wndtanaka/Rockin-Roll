@@ -135,6 +135,8 @@ public class Enemy : MonoBehaviour
                 break;
 
             case "Explosion":
+                Instantiate(shatterPrefab, transform.position, transform.rotation);
+
                 Destroy(gameObject);
                 break;
 
