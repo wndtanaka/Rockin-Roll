@@ -20,11 +20,12 @@ public class UIManager : MonoBehaviour
     public static bool isPaused = false;
     public static bool isAlive = false;
 
+    public Animator anim;
+
     string[] alphabets = new string[] {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
 "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
     float waitCounter = 3;
     Score score;
-    //SubmitHighScore submitHighScore;
 
     public static event OnUpdateHighScore onUpdateHighScore;
 
@@ -126,4 +127,21 @@ public class UIManager : MonoBehaviour
     {
         SubmitHighScore.AddNewHighScore(username.text, (int)Score.playerScore);
     }
+
+    //public void Page1RightButton()
+    //{
+    //    anim.SetTrigger("Page1Right");
+    //}
+    //public void Page2LeftButton()
+    //{
+    //    anim.SetTrigger("Page2Left");
+    //}
+    //public void Page2RightButton()
+    //{
+    //    anim.SetTrigger("Page2Right");
+    //}
+    //public void Page3LeftButton()
+    //{
+    //    anim.SetTrigger("Page3Left");
+    //}
 }
