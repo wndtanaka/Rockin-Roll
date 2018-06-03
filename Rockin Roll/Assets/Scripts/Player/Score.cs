@@ -54,7 +54,7 @@ public class Score : MonoBehaviour
         //Debug.Log(showScoreInt);
 
         //HighScoreCheck();
-        scoreboard.text = "Score: " + showScore.ToString();
+        scoreboard.text = "Score: " + showScoreInt.ToString();
         highScoreBoard.text = "High Score: " + highScore.ToString();
 
         if (Input.GetKeyDown(KeyCode.F1))
