@@ -125,7 +125,7 @@ public class UIManager : MonoBehaviour
 
     public void SubmitScoreButton()
     {
-        SubmitHighScore.AddNewHighScore(username.text, (int)Score.playerScore);
+        SubmitHighScore.AddNewHighScore(username.text, score.showScoreInt);
     }
 
     //public void Page1RightButton()
