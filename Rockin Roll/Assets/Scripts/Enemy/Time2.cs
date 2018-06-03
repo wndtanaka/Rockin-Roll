@@ -73,7 +73,7 @@ public class Time2 : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().speed = moveSpeed * 2;
+            other.gameObject.GetComponent<Player2>().speed = moveSpeed * 2;
         }
 
         if (other.gameObject.CompareTag("Enemy"))
