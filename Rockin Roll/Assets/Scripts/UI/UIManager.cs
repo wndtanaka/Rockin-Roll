@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     // both from Game Over gameobject
     public Text yourScore;
     public Text highScore;
+    public Text notify;
     public InputField username;
     public GameObject dummyGameObjects;
 
@@ -45,6 +46,8 @@ public class UIManager : MonoBehaviour
             score.scoreboard.gameObject.SetActive(true);
             score.highScoreBoard.gameObject.SetActive(true);
             isGameStart = true;
+            score.scoreboard.gameObject.SetActive(true);
+            score.highScoreBoard.gameObject.SetActive(true);
             dummyGameObjects.SetActive(false);
             for (int i = 0; i < howToPlayPage.Length; i++)
             {
@@ -57,6 +60,8 @@ public class UIManager : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             GameManager.Instance.InputController.enabled = false;
+            score.scoreboard.gameObject.SetActive(false);
+            score.highScoreBoard.gameObject.SetActive(false);
         }
         if (isDead)
         {
@@ -125,11 +130,29 @@ public class UIManager : MonoBehaviour
         counterText.gameObject.SetActive(false);
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        score.scoreboard.gameObject.SetActive(true);
+        score.highScoreBoard.gameObject.SetActive(true);
     }
 
     public void SubmitScoreButton()
     {
-        SubmitHighScore.AddNewHighScore(username.text, score.showScoreInt);
+        if (username.text.Contains("") || username.text.Contains(" ") || username.text.Contains(".") || username.text.Contains(","))
+        {
+            notify.text = "Proper username please";
+            StartCoroutine(Notification());
+        }
+        else
+        {
+            SubmitHighScore.AddNewHighScore(username.text, score.showScoreInt);
+        }
+    }
+
+    IEnumerator Notification()
+    {
+        notify.enabled = true;
+        yield return new WaitForSeconds(2f);
+        Debug.Log("OK");
+        notify.enabled = false;
     }
 
     public void Page1RightButton()
