@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public GameObject playerPrefab;
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
     public GameObject[] howToPlayPage;
@@ -40,6 +41,7 @@ public class UIManager : MonoBehaviour
     {
         if (!isGameStart && Input.GetKeyDown(KeyCode.Space))
         {
+            playerPrefab.SetActive(true);
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             isAlive = true;
@@ -151,7 +153,6 @@ public class UIManager : MonoBehaviour
     {
         notify.enabled = true;
         yield return new WaitForSeconds(2f);
-        Debug.Log("OK");
         notify.enabled = false;
     }
 
