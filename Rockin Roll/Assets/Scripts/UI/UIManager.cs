@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
 {
     public GameObject gameOverMenu;
     public GameObject pauseMenu;
-    public GameObject howToPlayMenu;
+    public GameObject[] howToPlayPage;
     public Text counterText;
     // both from Game Over gameobject
     public Text yourScore;
@@ -19,8 +19,6 @@ public class UIManager : MonoBehaviour
     public static bool isDead = false;
     public static bool isPaused = false;
     public static bool isAlive = false;
-
-    public Animator anim;
 
     string[] alphabets = new string[] {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p",
 "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
@@ -46,7 +44,11 @@ public class UIManager : MonoBehaviour
             score.scoreboard.gameObject.SetActive(true);
             score.highScoreBoard.gameObject.SetActive(true);
             isGameStart = true;
-            howToPlayMenu.SetActive(false);
+            for (int i = 0; i < howToPlayPage.Length; i++)
+            {
+                howToPlayPage[i].SetActive(false);
+            }
+
         }
         if (isPaused)
         {
@@ -128,20 +130,24 @@ public class UIManager : MonoBehaviour
         SubmitHighScore.AddNewHighScore(username.text, score.showScoreInt);
     }
 
-    //public void Page1RightButton()
-    //{
-    //    anim.SetTrigger("Page1Right");
-    //}
-    //public void Page2LeftButton()
-    //{
-    //    anim.SetTrigger("Page2Left");
-    //}
-    //public void Page2RightButton()
-    //{
-    //    anim.SetTrigger("Page2Right");
-    //}
-    //public void Page3LeftButton()
-    //{
-    //    anim.SetTrigger("Page3Left");
-    //}
+    public void Page1RightButton()
+    {
+        howToPlayPage[0].SetActive(false);
+        howToPlayPage[1].SetActive(true);
+    }
+    public void Page2LeftButton()
+    {
+        howToPlayPage[1].SetActive(false);
+        howToPlayPage[0].SetActive(true);
+    }
+    public void Page2RightButton()
+    {
+        howToPlayPage[1].SetActive(false);
+        howToPlayPage[2].SetActive(true);
+    }
+    public void Page3LeftButton()
+    {
+        howToPlayPage[2].SetActive(false);
+        howToPlayPage[1].SetActive(true);
+    }
 }

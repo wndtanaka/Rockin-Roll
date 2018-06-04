@@ -2,8 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum DummyType
+{
+    ENEMY_DISPLAY,
+    BONUS_DISPLAY,
+    DUMMY_ROTATION,
+    DUMMY_EXPLOSION,
+    DUMMY_SHATTER,
+}
 public class DummyGameobject : MonoBehaviour
 {
+    public DummyType dummyType;
     public Transform body;
 
     public int moveSpeed;
@@ -22,13 +31,22 @@ public class DummyGameobject : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "EnemyHeadOn")
+        switch (dummyType)
         {
-            StartCoroutine(Explode());
-        }
-        if (other.gameObject.tag == "Shatter")
-        {
-            StartCoroutine(Shatter());
+            case DummyType.ENEMY_DISPLAY:
+                break;
+            case DummyType.BONUS_DISPLAY:
+                break;
+            case DummyType.DUMMY_ROTATION:
+                break;
+            case DummyType.DUMMY_EXPLOSION:
+                StartCoroutine(Explode());
+                break;
+            case DummyType.DUMMY_SHATTER:
+                StartCoroutine(Shatter());
+                break;
+            default:
+                break;
         }
     }
 
