@@ -90,6 +90,10 @@ public class Time2 : MonoBehaviour
         {
             other.gameObject.GetComponent<Shatter>().moveSpeed = moveSpeed;
         }
+        if (other.gameObject.CompareTag("Dummy"))
+        {
+            other.gameObject.GetComponent<DummyGameobject>().moveSpeed = moveSpeed * 2;
+        }
     }
 
     void OnTriggerExit(Collider other)
@@ -112,6 +116,10 @@ public class Time2 : MonoBehaviour
         if (other.gameObject.CompareTag("Shatter"))
         {
             other.gameObject.GetComponent<Shatter>().moveSpeed = enemyStats.enemyMoveSpeed;
+        }
+        if (other.gameObject.CompareTag("Dummy"))
+        {
+            other.gameObject.GetComponent<DummyGameobject>().moveSpeed = 8;
         }
     }
 

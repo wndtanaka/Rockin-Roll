@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     public Text yourScore;
     public Text highScore;
     public InputField username;
+    public GameObject dummyGameObjects;
 
     public static bool isGameStart = false;
     public static bool isDead = false;
@@ -44,6 +45,7 @@ public class UIManager : MonoBehaviour
             score.scoreboard.gameObject.SetActive(true);
             score.highScoreBoard.gameObject.SetActive(true);
             isGameStart = true;
+            dummyGameObjects.SetActive(false);
             for (int i = 0; i < howToPlayPage.Length; i++)
             {
                 howToPlayPage[i].SetActive(false);

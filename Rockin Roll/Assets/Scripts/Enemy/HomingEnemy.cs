@@ -94,12 +94,4 @@ public class HomingEnemy : MonoBehaviour
                 break;
         }
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("EnemyHeadOn"))
-        {
-            
-        }
-    }
 }

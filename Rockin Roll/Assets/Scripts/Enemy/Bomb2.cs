@@ -90,8 +90,6 @@ public class Bomb2 : MonoBehaviour
 
     IEnumerator MoveStop()
     {
-
-
         yield return new WaitForSeconds(Random.Range(4f,5f));
 
         moveStopBool = true;
