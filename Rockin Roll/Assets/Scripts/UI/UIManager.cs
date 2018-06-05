@@ -138,8 +138,9 @@ public class UIManager : MonoBehaviour
 
     public void SubmitScoreButton()
     {
-        if (username.text.Contains("") || username.text.Contains(" ") || username.text.Contains(".") || username.text.Contains(","))
+        if (username.text == "" || username.text.Contains(" ") || username.text.Contains(".") || username.text.Contains(","))
         {
+            Debug.Log(username.text);
             notify.text = "Proper username please";
             StartCoroutine(Notification());
         }
